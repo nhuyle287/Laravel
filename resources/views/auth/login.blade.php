@@ -1,73 +1,97 @@
-@extends('layouts.app')
-
+@extends('layouts.master-unlogin')
+@section('title')
+    Đăng nhập
+@stop
+@section('head')
+    <link rel="stylesheet" href="css/login.css">
+    {{--        <link rel="stylesheet" href="css/loading.css">--}}
+@stop
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    {{--    <div class="loader">--}}
+    {{--        <img src="images/loading1.gif" alt="loading"/>--}}
+    {{--    </div>--}}
+    {{--    <div class="loading">--}}
+    {{--        <div class="borderKT icon"></div>--}}
+    {{--        <span  class="fas fa-circle-notch icon"></span>--}}
+    {{--    </div>--}}
+    <div class="page-container login wrapper fadeInDown">
+        <div class="row justify-content-center">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+            <div class="login_box">
+                <div class="card">
+                    <div class="card-header fadeIn first">{{ __('general.login') }}</div>
+                    <div class="card-body">
+                        @if(session('success'))
+                            <div class="alert alert-success button_">
+                                {{session('success')}}
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        @endif
+                        @if(session('fail'))
+                            <div class="alert alert-danger">
+                                {{session('fail')}}
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                        @endif
+                        <form action="{{route('postLogin')}}" method="post">
+                            @csrf
+                            <div class="form-group row">
+                                <label for="email"
+                                       class="col-md-3 col-ms-4 col-form-label text-left fadeIn second">{{ __('general.email') }}</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="email" id="email" class="form-control fadeIn second" name="email"
+                                           value="@if(request('email')){{request('email')}}@endif{{ old('email') }}"
+                                           autofocus>
+                                    @if($errors->has('email'))
+                                        <p class="help-block">
+                                            {{ $errors->first('email') }}
+                                        </p>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
+                            <div class="form-group row">
+                                <label for="password"
+                                       class="col-md-3 col-form-label text-left fadeIn third">{{ __('general.password') }}</label>
+                                <div class="col-md-6  col-xs-12">
+                                    <input type="password" id="password" class="form-control fadeIn third"
+                                           value="{{old('password')}}"
+                                           name="password">
+                                    @if($errors->has('password'))
+                                        <p class="help-block">
+                                            {{ $errors->first('password') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-top:0.5rem">
+                                <input type="checkbox" id="remember_me" class="fadeIn third"
+                                       name="remember_me" style="margin-left:9.5rem;width: 0.75rem;padding-bottom: 0.5rem"> <span style="font-size: 0.75rem;
+                                       margin-left: 0.5rem; font-weight: bold;">Ghi nhớ đăng nhập</span>
+                            </div>
+                            <div class="form-group row">
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn btn-sm fadeIn fourth" id="login">
+                                    {{ __('general.login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                        <br>
+                        <br>
+                        <strong> <a href="{{route('registeruser')}}" class="singup">Đăng ký tài khoản</a><span> / </span>
+                            <a href="{{route('resetpass')}}" class="reset_pass">Quên mật khẩu</a></strong>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+
+@stop
+@section('javascript')
+    <script>
+        $(document).ready(function () {
+            alert()
+        })
+    </script>
+    @stop
+

@@ -17,6 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/', function () {
+    return redirect(route('admin.index'));
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::namespace('Admin')->prefix('/admin')->group(function (): void {
+    // Login
+    Route::get('/login', 'LoginController@getLogin')->name('login');
+    Route::post('/login', 'LoginController@postLogin')->name('postLogin');
+    //reset pass
+    Route::get('/resetpass', 'LoginController@getResetpass')->name('resetpass');
+    Route::post('/resetpass', 'LoginController@postReset')->name('postReset');
+    //register user
+    Route::get('/register-user','LoginController@getRegisteruser')->name('registeruser');
+    Route::post('/register-user','LoginController@postRegisteruser')->name('postRegisteruser');
+    //Logout
+    Route::post('/logout', 'LoginController@postLogout')->name('logout');
+    Route::get('/','HomeController@index')->name('admin.index');
+
+});

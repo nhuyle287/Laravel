@@ -2,10 +2,7 @@ body {
     font-family: Roboto !important;
 }
 
-.login-background{
-    background-image:url('../images/login.jpg');
-    background-repeat:no-repeat;
-}
+
 
 .row {
     flex-wrap: nowrap;

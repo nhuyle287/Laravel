@@ -4,6 +4,7 @@
 <body class="login-container">
 <!-- Main navbar -->
 <div class="login-background">
+
 <div class="navbar navbar-inverse bg-indigo"
      style=" background-image: linear-gradient(to top, rgb(22, 53, 138), #83abda);;">
     <div class="navbar-header">

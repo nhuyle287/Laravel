@@ -26,7 +26,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-
+{{--
                 @can('customer-access')
                     <li class="nav-item has-treeview " style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="{{ route("admin.customers.index") }}"
@@ -318,8 +318,9 @@
                         </ul>
                     </li>
                 @endcan
+                --}}
                 @can('staff-management-access')
-                    <li class="nav-item has-treeview {{ ($request->segment(2) == 'staffs' || $request->segment(2) == 'positions' || $request->segment(2) == 'departments') ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
+                    <li class="nav-item has-treeview {{ ($request->segment(2) == 'staffs' || $request->segment(2) == 'positions' ) ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="#" class="nav-link">
                             <i class="fas fa-user-tie"></i>
                             <p>
@@ -358,6 +359,7 @@
                         </ul>
                     </li>
                 @endcan
+                {{--
                 @can('internship-management-access')
                     <li class="nav-item has-treeview {{ $request->segment(2) == 'internships' ? 'menu-open' : '' }}
                         || {{ $request->segment(2) == 'internship-topic' ? 'menu-open' : '' }}
@@ -509,7 +511,7 @@
                             @endcan
                         </ul>
                     </li>
-                @endcan
+                @endcan --}}
                 <li style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                     <a class="nav-link" href="javascript:" onclick="$('#logout').submit();">
                         <i class="fa fa-power-off"></i> <span>  {{ __('sidebar.logout') }}</span>

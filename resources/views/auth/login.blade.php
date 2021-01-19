@@ -15,6 +15,7 @@
     {{--        <span  class="fas fa-circle-notch icon"></span>--}}
     {{--    </div>--}}
     <div class="page-container login wrapper fadeInDown">
+    
         <div class="row justify-content-center">
 
             <div class="login_box">

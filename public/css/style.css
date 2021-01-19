@@ -1,0 +1,57 @@
+div#container {
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: 70px;
+}
+div#card {
+    width: 18rem;
+    margin: 10px 10px;
+}
+span.input-group-text {
+    height: 38px;
+}
+.registerservice {
+
+    font-family: Roboto;
+    color: 	#333333;
+
+}
+.titleheader{
+    font-family: Roboto !important;
+    color: 	#000000;
+}
+.registerservice1{
+
+    font-family: Roboto;
+    color: 	#333333;
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+}
+.card .abcdef{
+    background-color: LightGray;
+    border-radius: 10px;
+    border: none;
+}
+.card-header{
+    border-bottom: 0px !important;
+}
+.backgroundinputregister{
+    background-color: LightGray !important;
+}
+.thstyleform{
+    text-align: center; font-family: 'Roboto';
+    vertical-align: middle !important;
+}
+.pstyleform1{
+    color: #0c525d !important;
+    font-size: 90%;
+
+}
+.table_header{
+font-family: Roboto;
+    text-align: center;
+    background-color: #17a2b8;
+    color: white;
+}
+.

@@ -10,7 +10,7 @@
     <div class="navbar-header">
         <a class="navbar-brand">
 
-            <span class="brand-title">Chào mừng đến phòng mạch</span>
+            <span class="brand-title">Chào mừng đến phòng mạch Lý Kim Tùng</span>
         </a>
         <ul class="nav navbar-nav visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>

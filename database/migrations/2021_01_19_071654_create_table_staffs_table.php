@@ -22,7 +22,7 @@ class CreateTableStaffsTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();
             $table->date('birthday')->nullable();
-            $table->integer('salary')->unique()->nullable();
+            $table->integer('salary')->nullable();
             $table->string('position_code')->nullable();
             $table->string('department_code')->nullable();
             $table->date('start_time')->nullable();

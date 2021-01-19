@@ -27,7 +27,7 @@
                 <a href="https://www.hoatech.vn/lien-he/" class="nav-link">Liên hệ</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('register.internship.get_register')}}" class="nav-link">Đăng ký thực tập sinh</a>
+                {{-- <a href="{{route('register.internship.get_register')}}" class="nav-link">Đăng ký thực tập sinh</a> --}}
             </li>
         </ul>
 
@@ -130,14 +130,14 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-@include('layout.sidebar')
+@include('layouts.sidebar')
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         @yield('content')
     </div>
     <!-- /.content-wrapper -->
-    @include('layout.footer')
+    @include('layouts.footer')
 
 </div>
 

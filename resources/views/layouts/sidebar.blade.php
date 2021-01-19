@@ -26,7 +26,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-
+{{-- 
                 @can('customer-access')
                     <li class="nav-item has-treeview " style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="{{ route("admin.customers.index") }}"
@@ -509,7 +509,7 @@
                             @endcan
                         </ul>
                     </li>
-                @endcan
+                @endcan --}}
                 <li style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                     <a class="nav-link" href="javascript:" onclick="$('#logout').submit();">
                         <i class="fa fa-power-off"></i> <span>  {{ __('sidebar.logout') }}</span>

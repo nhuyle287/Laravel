@@ -3,7 +3,7 @@ body {
 }
 
 .card-header-new {
-    background-image: linear-gradient(to top, rgb(22 ,138, 106), #28a745);
+    background-image: linear-gradient(to top, #83abda, rgb(22, 53, 138));
     color: whitesmoke;
 }
 .body-content{

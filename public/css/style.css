@@ -11,6 +11,9 @@ div#card {
 span.input-group-text {
     height: 38px;
 }
+.nav .nav-item{
+    border-radius: 5px !important;
+}
 .registerservice {
 
     font-family: Roboto;

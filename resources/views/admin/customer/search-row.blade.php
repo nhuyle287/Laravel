@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     @can('customer-update')
-                        <a href="{{route('admin.customers.edit', [$cus->id])}}"
+                        <a href="{{route('admin.medicines.edit', [$cus->id])}}"
                            class="btn  btn-success btn-xs">{{ __('general.edit') }}</a>
                     @endcan
                     @can('customer-delete')

@@ -121,7 +121,16 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
     });
 
 
+    //Medicine
+    Route::prefix('/medicines')->group(function(): void {
+        Route::get('/', 'MedicineController@index')->name('admin.medicines.index');
+        Route::post('/', 'MedicineController@searchRow')->name('admin.medicines.search-row');
+        Route::get('/create', 'MedicineController@entry')->name('admin.medicines.create');
+        Route::post('/store', 'MedicineController@store')->name('admin.medicines.store');
+        Route::post('/destroy', 'MedicineController@destroy')->name('admin.medicines.destroy');
+        Route::post('/destroy-select', 'MedicineController@destroySelect')->name('admin.medicines.destroy-select');
 
+    });
 
 
 });

@@ -39,7 +39,7 @@
                 @endcan
                 @can('medicine-access')
                     <li class="nav-item has-treeview " style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
-                        <a href="{{route("admin.customers.index")}}"
+                        <a href="{{route("admin.medicines.index")}}"
                            class="nav-link {{ $request->segment(2) == 'customers' ? 'active active-sub' : '' }}">
                             <i class="fa fa-child"></i>
                             <p>

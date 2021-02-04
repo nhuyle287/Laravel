@@ -206,9 +206,10 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="clearfix">
                             <div style="float: right">
-                                {!! $permissions->links() !!}
+                                {{ $permissions->links() }}
                             </div>
                         </div>
                     </div>

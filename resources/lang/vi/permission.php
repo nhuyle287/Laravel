@@ -4,7 +4,7 @@ return [
     'id' => 'STT',
     'name' => 'Tên quyền',
     'description' => 'Mô tả',
-    'create' => 'Tạo quyền',
+    'create' => 'Quyền',
     'permission' => 'Quyền',
     'screen' => 'Màn hình',
 ];

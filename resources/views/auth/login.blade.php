@@ -1,98 +1,104 @@
-@extends('layouts.master-unlogin')
-@section('title')
-    Đăng nhập
-@stop
-@section('head')
-    <link rel="stylesheet" href="css/login.css">
-    {{--        <link rel="stylesheet" href="css/loading.css">--}}
-@stop
-@section('content')
-    {{--    <div class="loader">--}}
-    {{--        <img src="images/loading1.gif" alt="loading"/>--}}
-    {{--    </div>--}}
-    {{--    <div class="loading">--}}
-    {{--        <div class="borderKT icon"></div>--}}
-    {{--        <span  class="fas fa-circle-notch icon"></span>--}}
-    {{--    </div>--}}
-    <div class="page-container login wrapper fadeInDown">
-    
-        <div class="row justify-content-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Đăng nhập | Phòng mạch Tùng Lý</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.ico') }}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util_login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main_login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
+    <!--===============================================================================================-->
+    <style>
+        .container-login100 {
+            background-image: url({{ asset('images/bg_login.jpg') }});
+        }
+    </style>
+</head>
+<body>
 
-            <div class="login_box">
-                <div class="card">
-                    <div class="card-header fadeIn first">{{ __('general.login') }}</div>
-                    <div class="card-body">
-                        @if(session('success'))
-                            <div class="alert alert-success button_">
-                                {{session('success')}}
-                            </div>
-                        @endif
-                        @if(session('fail'))
-                            <div class="alert alert-danger">
-                                {{session('fail')}}
-                            </div>
-                        @endif
-                        <form action="{{route('postLogin')}}" method="post">
-                            @csrf
-                            <div class="form-group row">
-                                <label for="email"
-                                       class="col-md-3 col-ms-4 col-form-label text-left fadeIn second">{{ __('general.email') }}</label>
-                                <div class="col-md-6 col-xs-12">
-                                    <input type="email" id="email" class="form-control fadeIn second" name="email"
-                                           value="@if(request('email')){{request('email')}}@endif{{ old('email') }}"
-                                           autofocus>
-                                    @if($errors->has('email'))
-                                        <p class="help-block">
-                                            {{ $errors->first('email') }}
-                                        </p>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="password"
-                                       class="col-md-3 col-form-label text-left fadeIn third">{{ __('general.password') }}</label>
-                                <div class="col-md-6  col-xs-12">
-                                    <input type="password" id="password" class="form-control fadeIn third"
-                                           value="{{old('password')}}"
-                                           name="password">
-                                    @if($errors->has('password'))
-                                        <p class="help-block">
-                                            {{ $errors->first('password') }}
-                                        </p>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group row" style="margin-top:0.5rem">
-                                <input type="checkbox" id="remember_me" class="fadeIn third"
-                                       name="remember_me" style="margin-left:9.5rem;width: 0.75rem;padding-bottom: 0.5rem"> <span style="font-size: 0.75rem;
-                                       margin-left: 0.5rem; font-weight: bold;">Ghi nhớ đăng nhập</span>
-                            </div>
-                            <div class="form-group row">
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 fadeInDown">
+            <div class="login100-form-title" style="background-image: url({{ asset('images/bg-01.jpg') }});">
+					<span class="login100-form-title-1">
+						Tùng Lý
+					</span>
+            </div>
 
-                                <button type="submit" class="btn btn-sm fadeIn fourth" id="login">
-                                    {{ __('general.login') }}
-                                </button>
+            <form action="{{ route('postLogin') }}" method="POST" class="login100-form validate-form">
+                @csrf
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                    <span class="label-input100">Email</span>
+                    <input class="input100" type="text" name="email" placeholder="Nhập email">
+                    <span class="focus-input100"></span>
+                </div>
 
+                <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                    <span class="label-input100">Mật khẩu</span>
+                    <input class="input100" type="password" name="password" placeholder="Nhập mật khẩu">
+                    <span class="focus-input100"></span>
+                </div>
 
-                            </div>
-                        </form>
-                        <br>
-                        <br>
-                        <strong> <a href="{{route('registeruser')}}" class="singup">Đăng ký tài khoản</a><span> / </span>
-                            <a href="{{route('resetpass')}}" class="reset_pass">Quên mật khẩu</a></strong>
+                <div class="flex-sb-m w-full p-b-30">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember_me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Nhớ mật khẩu
+                        </label>
+                    </div>
 
+                    <div>
+                        <a href="{{ route('resetpass') }}" class="txt1">
+                            Quên mật khẩu?
+                        </a>
                     </div>
                 </div>
-            </div>
+
+                <div class="container-login100-form-btn" >
+                    <button class="login100-form-btn" style="margin-left: 3rem">
+                        Đăng nhập
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
-@stop
-@section('javascript')
-    <script>
-        $(document).ready(function () {
-            alert()
-        })
-    </script>
-    @stop
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+<script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('js/main_login.js') }}"></script>
 
+</body>
+</html>

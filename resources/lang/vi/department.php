@@ -6,5 +6,5 @@ return [
     'name' => 'Tên phòng ban',
     'code' => 'Mã phòng ban',
     'description' => 'Mô tả',
-    'create' => 'Tạo phòng ban',
+    'create' => 'Phòng ban',
 ];

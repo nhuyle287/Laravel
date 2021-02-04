@@ -34,12 +34,12 @@ tr p {
 
 .form-group-left {
     float: left;
-    width: 78%;
+    width: 50%;
 }
 
 .form-group-right {
     float: right;
-    width: 20%;
+    width: 48%;
 }
 .button_{
     margin-left: 0.25rem;

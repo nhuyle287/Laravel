@@ -39,6 +39,19 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
     Route::post('/logout', 'LoginController@postLogout')->name('logout');
     Route::get('/','HomeController@index')->name('admin.index');
 
+    //customer management
+    Route::prefix('/customers')->group(function (): void {
+        Route::get('/', 'CustomerController@index')->name('admin.customers.index');
+        Route::post('/', 'CustomerController@searchRow')->name('admin.customers.search-row');
+        Route::get('/{id}/show', 'CustomerController@show')->name('admin.customers.show');
+        Route::get('/create', 'CustomerController@entry')->name('admin.customers.create');
+        Route::get('/{id}/edit', 'CustomerController@entry')->name('admin.customers.edit');
+        Route::post('/store', 'CustomerController@store')->name('admin.customers.store');
+        Route::post('/destroy', 'CustomerController@destroy')->name('admin.customers.destroy');
+        Route::post('/destroy-select', 'CustomerController@destroySelect')->name('admin.customers.destroy-select');
+    });
+
+
 
     //Permission
     Route::prefix('/permissions')->group(function (): void {

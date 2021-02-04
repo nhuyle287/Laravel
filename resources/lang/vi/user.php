@@ -7,5 +7,5 @@ return [
     'account' => 'Tài khoản',
     'password' => 'Mật khẩu',
     'role' => 'Vai trò',
-    'create' => 'Tạo tài khoản',
+    'create' => 'Tài khoản',
 ];

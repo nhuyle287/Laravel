@@ -84,9 +84,9 @@
           rel="stylesheet"/>
     <script src="{{asset('js/loading.js')}}"></script>
 
-    {{-- <script>
+     <script>
         setTimeout(function () {
             $('.button_').fadeOut('fast');
         }, 2000);
-    </script> --}}
+    </script>
 </head>

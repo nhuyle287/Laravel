@@ -4,6 +4,6 @@ return [
     'list' => 'Danh sách chức vụ',
     'name' => 'Chức vụ',
     'description' => 'Mô tả',
-    'create' => 'Tạo chức vụ',
+    'create' => 'Chức vụ',
     'code' => 'Mã chức vụ',
 ];

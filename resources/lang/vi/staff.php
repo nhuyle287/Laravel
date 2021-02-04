@@ -11,7 +11,7 @@ return [
     'birthday' => 'Ngày sinh',
     'salary' => 'Lương',
     'start_time' => 'Ngày vào làm',
-    'create' => 'Tạo nhân viên',
+    'create' => 'Nhân viên',
     'password' => 'Mật khẩu',
     'department' => 'Phòng ban',
 ];

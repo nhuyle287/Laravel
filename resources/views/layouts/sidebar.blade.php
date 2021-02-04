@@ -1,7 +1,7 @@
 @inject('request', 'Illuminate\Http\Request')
 
 <aside class="main-sidebar sidebar-dark-light elevation-5"
-       style="background-image: linear-gradient(to top, #83abda, rgb(22, 53, 138));box-shadow: 0 5rem  rgb(22, 53, 138)!important">
+       style="background-image: linear-gradient(to top, #83abda, rgb(22, 53, 138));box-shadow: 0 5rem   #83abda!important">
     <!-- Brand Logo -->
     <a href="#" class="brand-link" style="background-color: rgb(22, 53, 138);">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -26,7 +26,17 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-
+                @can('customer-access')
+                    <li class="nav-item has-treeview " style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
+                        <a href="{{route("admin.customers.index")}}"
+                           class="nav-link {{ $request->segment(2) == 'customers' ? 'active active-sub' : '' }}">
+                            <i class="fa fa-child"></i>
+                            <p>
+                                Khách hàng
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 @can('staff-management-access')
                     <li class="nav-item has-treeview {{ ($request->segment(2) == 'staffs' || $request->segment(2) == 'positions' ) ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="#" class="nav-link">
@@ -45,6 +55,7 @@
                                         <p>{{ __('sidebar.staff') }}</p>
                                     </a>
                                 </li>
+
                             @endcan
                             @can('position-access')
                                 <li class="nav-item">
@@ -68,59 +79,7 @@
                     </li>
                 @endcan
                 {{--
-                @can('internship-management-access')
-                    <li class="nav-item has-treeview {{ $request->segment(2) == 'internships' ? 'menu-open' : '' }}
-                        || {{ $request->segment(2) == 'internship-topic' ? 'menu-open' : '' }}
-                        || {{ $request->segment(2) == 'category-topic' ? 'menu-open' : '' }}
-                        || {{ $request->segment(2) == 'topics' ? 'menu-open' : '' }} " style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
-                        <a href="#" class="nav-link">
-                            <i class="fa fa-users"></i>
-                            <p>
-                                Quản lý thực tập sinh
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview " id="nav-item" style="background-color:#347C2C">
-                            @can('internship-access')
-                                <li class="nav-item ">
-                                    <a href="{{route("admin.internship.index")}}"
-                                       class="nav-link {{ $request->segment(2) == 'internships' ? 'active active-sub' : '' }}">
-                                        <i class="fa fa-gift"></i>
-                                        <p>Danh sách thực tập sinh</p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('internship-topic-access')
-                                <li class="nav-item ">
-                                    <a href="{{route("admin.internship-topic.index")}}"
-                                       class="nav-link {{ $request->segment(2) == 'internship-topic' ? 'active active-sub' : '' }}">
-                                        <i class="fa fa-gift"></i>
-                                        <p>Danh sách đang thực tập</p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('category-topic-access')
-                                <li class="nav-item ">
-                                    <a href="{{route("admin.category-topic.index")}}"
-                                       class="nav-link {{ $request->segment(2) == 'category-topic' ? 'active active-sub' : '' }}">
-                                        <i class="fa fa-gift"></i>
-                                        <p>Quản lý danh mục đề tài</p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('topic-access')
-                                <li class="nav-item "
-                                    style="margin-bottom: 3px;">
-                                    <a href="{{route("admin.topic.index")}}"
-                                       class="nav-link {{ $request->segment(2) == 'topic' ? 'active active-sub' : '' }}">
-                                        <i class="fa fa-gift"></i>
-                                        <p>Quản lý danh sách đề tài</p>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
+
                 @can('contract-management-access')
                     <li class="nav-item has-treeview {{ $request->segment(3) == 'software' && $request->segment(2) == 'contract' ? 'menu-open' : '' }}
                         || {{($request->segment(3) == 'vps' && $request->segment(2) == 'contract') ? 'menu-open' : '' }} || {{ $request->segment(3) == 'hosting' && $request->segment(2) == 'contract' ? 'menu-open' : '' }}
@@ -179,7 +138,7 @@
                             @endcan
                         </ul>
                     </li>
-                @endcan
+                @endcan --}}
                 @can('user-management-access')
                     <li class="nav-item has-treeview {{ ($request->segment(2) == 'roles' ||  $request->segment(2) == 'permissions' ||  $request->segment(2) == 'users') ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="#" class="nav-link">
@@ -189,7 +148,7 @@
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview" style="background-color: #347C2C">
+                        <ul class="nav nav-treeview" style="background-color: rgb(22, 53, 138)">
                             @can('permission-access')
                                 <li class="nav-item">
                                     <a href="{{ route('admin.permissions.index') }}"
@@ -219,8 +178,8 @@
                             @endcan
                         </ul>
                     </li>
-                @endcan --}}
-                <li style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
+                @endcan
+                <li class="nav-item" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                     <a class="nav-link" href="javascript:" onclick="$('#logout').submit();">
                         <i class="fa fa-power-off"></i> <span>  {{ __('sidebar.logout') }}</span>
                         <span class="pull-right-container"></span>

@@ -57,7 +57,6 @@ class CustomerController extends AdminController
         //tạo mới đối tượng khi không có request( request trả về null)
         $cus = new Customer();
 
-        $auth = Auth::id();
 //        dd($auth);
 //trong trường hợp chỉnh sửa (trả về id của đối tượng muốn chỉnh sửa)
         if ($request->id) {
@@ -74,16 +73,16 @@ class CustomerController extends AdminController
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-//        $request['name'] = $request->name;
-//        $request['phone_number'] = $request->phone_number;
-//        $request['email'] = $request->email;
-//        $request['address'] = $request->address;
-//        $request['birthday'] = $request->birthday;
-//        $request['notes'] = $request->notes;
+       $cus->name = $request->name;
+        $cus->phone_number = $request->phone_number;
+        $cus->email = $request->email;
+        $cus->address = $request->address;
+        $cus->birthday = $request->birthday;
+        $cus->notes = $request->notes;
         // chuyển đổi ngày tháng năm người dùng giống mysql trước khi đưa vào database
         //$request->birthday lấy name ngoài edit-add.blade.php
-        $request['birthday'] = date('Y-m-d H:i:s', strtotime($request->birthday));
-        $request['id_staff'] = $auth;
+
+//        dd($request['birthday']);
         $cus->fill($request->all());
         try {
 

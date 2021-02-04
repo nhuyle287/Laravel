@@ -36,32 +36,12 @@
                                             <td>{{ $cus->address }}</td>
                                         </tr>
                                         <tr>
-                                            <td>{{ __('customer.phone') }}</td>
+                                            <td>{{ __('customer.phone_number') }}</td>
                                             <td>{{ $cus->phone_number }}</td>
                                         </tr>
                                         <tr>
-                                            <td>{{ __('customer.nameStore') }}</td>
-                                            <td>{{ $cus->nameSote }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('customer.position') }}</td>
-                                            <td>{{ $cus->position }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('customer.fax_number') }}</td>
-                                            <td>{{ $cus->fax_number }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('customer.tax_number') }}</td>
-                                            <td>{{ $cus->tax_number }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('customer.account_number') }}</td>
-                                            <td>{{$cus->account_number }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('customer.open_at') }}</td>
-                                            <td>{{ $cus->open_at }}</td>
+                                            <td>{{ __('customer.birthday') }}</td>
+                                            <td>{{date('d-m-Y', strtotime($cus->birthday))}}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('customer.note') }}</td>
@@ -77,7 +57,7 @@
                         </div>
                     </div>
                     @can('customer-update')
-                        <a href="{{route('admin.medicines.edit', [$cus->id])}}"
+                        <a href="{{route('admin.customers.edit', [$cus->id])}}"
                            class="btn  btn-success btn-xs">{{ __('general.edit') }}</a>
                     @endcan
                     @can('customer-delete')

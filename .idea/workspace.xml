@@ -20,18 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c49a491-a68a-4f99-88eb-789ad3f58572" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Medicine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MedicineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MedicineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Medicinee.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/vi/medicine.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/vi/medicine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/search-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/search-row.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/medicine/edit-add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/medicine/edit-add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/medicine/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/medicine/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/medicine/search-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/medicine/search-row.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,9 +251,9 @@
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1612424779221" />
     <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1611849253103" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1612426775669">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1612430978783">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612426775669" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612430978783" />
   </component>
 </project>

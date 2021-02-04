@@ -4,14 +4,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Customer;
-use App\Models\Domain;
-use App\Models\Product;
-use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
-use function GuzzleHttp\Promise\all;
+
 
 class CustomerController extends AdminController
 {

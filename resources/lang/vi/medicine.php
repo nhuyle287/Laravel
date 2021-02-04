@@ -7,5 +7,5 @@ return
     'name' => 'Tên thuốc',
     'price' => 'Giá bán lẻ',
     'purchase_price' => 'Giá nhập',
-
+    'medicine'=>'Thuốc'
 ];

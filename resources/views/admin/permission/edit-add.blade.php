@@ -29,7 +29,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="required" for="description">{{ __('permission.description') }} <label class="content-required">*</label></label>
+                        <label  for="description">{{ __('permission.description') }} </label>
                         <input class="form-control" type="text" name="description" id="description" value="{{ isset($permission->description) ? $permission->description : '' }}">
                     </div>
                     <input style="display: none" id="per-name" name="name">

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Permission extends Model
 {
     protected $table = 'permissions';
-    protected $fillable = ['id', 'name', 'description', 'feature', 'permission_type'];
+    protected $fillable = ['id', 'name',  'feature', 'permission_type'];
     use SoftDeletes;
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -16,7 +16,7 @@ class Permission extends Model
 
     public $rules = [
         'name' => 'required|unique:permissions,name,NULL,id,deleted_at,NULL',
-        'description' => 'required',
+
         'feature' => 'required',
     ];
 
@@ -26,7 +26,6 @@ class Permission extends Model
         $this->messages = [
             'name.required' => __('permission.name').__('general.required'),
             'name.unique' => __('permission.permission').__('general.exist'),
-            'description.required' => __('permission.description').__('general.required'),
             'feature.required' => __('permission.screen').__('general.required'),
         ];
     }

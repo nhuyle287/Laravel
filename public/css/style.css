@@ -57,4 +57,7 @@ font-family: Roboto;
     background-color: #17a2b8;
     color: white;
 }
+.brand-link .brand-text:hover{
+    color:white;
+}
 .

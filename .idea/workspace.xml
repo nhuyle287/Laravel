@@ -19,37 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c49a491-a68a-4f99-88eb-789ad3f58572" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Register_medicineController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Register/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Register/Register_MedicineController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/ConstantsModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Register_Medicine.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_06_072351_create_table_register_medicine_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/indexMedical.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/search_row.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/search_rowMedical.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/register/register_medicine.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Laravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_26_123824_create_table_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_26_123824_create_table_customers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/PermissionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/PermissionsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/edit-add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/edit-add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/search-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/search-row.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/nav-header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/nav-header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="5c49a491-a68a-4f99-88eb-789ad3f58572" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,11 +169,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\Laravel\resources\views\admin\register_medicine" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\Laravel\app\Http\Controllers\Register" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\Laravel\resources\views\admin\register_medicine" />
     </key>
   </component>
   <component name="RunManager" selected="npm.development">
@@ -242,7 +212,7 @@
       <workItem from="1611921474786" duration="1886000" />
       <workItem from="1612416731903" duration="309000" />
       <workItem from="1612579738753" duration="587000" />
-      <workItem from="1612591968600" duration="15196000" />
+      <workItem from="1612591968600" duration="15980000" />
     </task>
     <servers />
   </component>
@@ -293,9 +263,9 @@
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1612437224866" />
     <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1611849253103" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1612628294487">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1612633675517">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612628294487" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612633675517" />
   </component>
 </project>

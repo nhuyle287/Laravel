@@ -1,19 +1,20 @@
-@inject('request', 'Illuminate\Http\Request')
 @extends('layouts.master')
 @section('title')
-    Khách hàng
+    Khám bệnh
 @stop
 @section('head')
     <link rel="stylesheet" href="css/responsive.css">
+
 @stop
 @section('content')
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @can('customer-view')
+    @can('list-medicine-view')
         <div class="body-content">
 
             <div class="card">
                 <div class="card-header card-header-new">
-                    {{ __('customer.list') }}
+                    Danh sách khám bệnh
                 </div>
 
                 <div class="card-body">
@@ -42,7 +43,7 @@
                                         100
                                     </option>
                                 </select>
-                                @can('customer-delete')
+                                @can('list-medicine-delete')
                                     <div>
                                         <a id="btn-delete" style="margin-left: 0.25rem"
                                            class="btn btn-warning"
@@ -58,7 +59,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title"
-                                                            id="exampleModalLabel">Khách hàng</h5>
+                                                            id="exampleModalLabel">Khám bệnh</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -91,12 +92,7 @@
                                             {{session('fail')}}
                                         </div>
                                     @endif
-                                    @can('customer-create')
-                                        <div class="create float-left">
-                                            <a href="{{route('admin.customers.create')}}" class="btn btn-success "><i
-                                                    class="fas fa-plus"></i> {{ __('general.create') }}</a>
-                                        </div>
-                                    @endcan
+
                                 </div>
                             </div>
 
@@ -106,7 +102,7 @@
                             {{--                                <a style="margin-right: 5px" class="btn btn-warning" href="#" role="button"><i--}}
                             {{--                                        class="fas fa-search"></i></a>--}}
                             {{--                            </div>--}}
-                            @can('customer-search')
+                            @can('list-medicine-search')
                                 <div>
                                     <input id="search" class="form-control" type="search"
                                            placeholder="{{ __('general.search') }}"
@@ -116,43 +112,45 @@
                         </div>
                     </div>
 
-                    <div id="customer-table">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th style="width: 10px"><input type="checkbox" id="check-all"></th>
-                                <th>{{ __('customer.id') }}</th>
-                                <th>{{ __('customer.name') }}</th>
-                                <th>{{ __('customer.phone_number') }}</th>
-                                <th class="test">Tuổi</th>
+                    <div id="order-table">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width: 10px"><input type="checkbox" id="check-all"></th>
+                                    <th class="thstyleform">STT</th>
+                                    <th class="thstyleform">
+                                       Khách hàng
+                                    </th>
 
-
-                                <th class="test"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                 @include('admin.customer.search-row')
-                            </tbody>
-                        </table>
+                                    <th class="thstyleform">&nbsp;</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @include('admin.register_medicine.search_rowMedical')
+                                </tbody>
+                            </table>
+                        </div>
+                        <input type="hidden" name="hidden_page" id="hidden_page" value="1"/>
+                        {{--                        <div class="clearfix">--}}
+                        {{--                            --}}
+                        {{--                            <div class="text-right" style="float: right ; margin-top: 5px" id="page">--}}
+                        {{--                                {{ $register_services->links() }}--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
                     </div>
-                    {{--                    <div class="clearfix">--}}
-                    {{--                        <div style="float: right">--}}
-
-                    {{--                            {!! $customers->links() !!}--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-                    <input type="hidden" name="hidden_page" id="hidden_page" value="1"/>
                 </div>
             </div>
         </div>
-        </div>
     @endcan
 @stop
+
 @section('javascript')
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $("#check-all").click(function () {
+            $("#check-all").on('click', function () {
+                // alert('a')
                 $('input:checkbox').not(this).prop('checked', this.checked);
             });
 
@@ -170,20 +168,16 @@
             function fetch_data(page, amountRow, query) {
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('admin.customers.search-row') }}?page=' + page + '&amount=' + amountRow + '&key=' + query,
+                    url: '{{ route('admin.medical-examinations.search-row') }}?page=' + page + '&amount=' + amountRow + '&key=' + query,
                     success: function (response) {
-
                         $("tbody").empty();
                         $("tbody").html(response);
-                        // alert(response)
                     }
                 })
             }
 
-
             $("#search").on('keyup', function () {
                 var key = $(this).val();
-                console.log(key)
                 var page = $('#hidden_page').val();
                 var amountRow = $("#showRow :selected").val();
                 $.ajaxSetup({
@@ -211,14 +205,27 @@
 
 
 
-
             $("#showRow").on('change', function () {
                 var amountRow = $("#showRow :selected").val();
-                var url = '{{ route('admin.customers.index').'?amount=:amount' }}';
+                var url = '{{ route('admin.medical-examinations.index').'?amount=:amount' }}';
                 url = url.replace(':amount', amountRow);
                 window.location.assign(url);
             });
 
         });
     </script>
+{{--    <script type="text/javascript">--}}
+{{--        //update transaction--}}
+{{--        $('#myModal').on('show.bs.modal', function (event) {--}}
+{{--            var button = $(event.relatedTarget)--}}
+{{--            var transaction = button.data('transaction')--}}
+{{--            var id = button.data('id')--}}
+{{--            var modal = $(this)--}}
+{{--            modal.find('.modal-body #transaction option:selected').text();--}}
+{{--            modal.find('.modal-body #id').val(id);--}}
+{{--        })--}}
+{{--    </script>--}}
+
 @stop
+
+

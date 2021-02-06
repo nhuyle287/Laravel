@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Khách hàng
+    Khám bệnh
 @stop
 @section('head')
     <link rel="stylesheet" href="{{ asset('../css/responsive.css') }}">
@@ -20,7 +20,8 @@
                     <div class="clearfix">
                         <div class="panel-body">
                             <div class="form-row">
-                                <div class="form-group col-md-12">
+
+                                <div class="form-group col-md-6">
                                     <div class="col-xs-12 form-group">
                                         <label>Họ và tên <label class="content-required">*</label></label>
                                         <input type="text" class="form-control" name="name"
@@ -33,10 +34,7 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <div class="col-xs-12 form-group">
                                         <label>Số Điện Thoại <label class="content-required">*</label></label>
                                         <input type="text" class="form-control" name="phone_number"
@@ -50,8 +48,9 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <div class="col-xs-12 form-group">
                                         <label>Tuổi <label class="content-required">*</label></label>
                                         <input type="number" class="form-control" name="birthday"
@@ -64,11 +63,9 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <div class="col-xs-12 form-group">
-                                        <label>Email</label>
+                                        <label>Email<label class="content-required">*</label></label>
                                         <input type="text" class="form-control" name="email"
                                                value="{{isset($customer->email) ? old('email', $customer->email) : old('email')}}">
                                         <p class="help-block text-danger"></p>
@@ -80,12 +77,13 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div class="col-xs-12 form-group">
                                         <label>Địa Chỉ</label>
                                         <input  class="form-control" name="address"
-                                               value="{{isset($customer->address) ? old('address', $customer->address) : old('address')}}">
+                                                value="{{isset($customer->address) ? old('address', $customer->address) : old('address')}}">
                                     </div>
                                 </div>
                             </div>

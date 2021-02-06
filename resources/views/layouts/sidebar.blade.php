@@ -40,12 +40,53 @@
                 @can('medicine-access')
                     <li class="nav-item has-treeview " style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="{{route("admin.medicines.index")}}"
-                           class="nav-link {{ $request->segment(2) == 'customers' ? 'active active-sub' : '' }}">
-                            <i class="fa fa-child"></i>
+                           class="nav-link {{ $request->segment(2) == 'medicines' ? 'active active-sub' : '' }}">
+                            <i class="fas fa-pills"></i>
                             <p>
                                 Thuốc
                             </p>
                         </a>
+                    </li>
+                @endcan
+                @can('list-medicine-managerment-access')
+                    <li class="nav-item has-treeview {{ ($request->segment(2) == 'register-medicine' || $request->segment(2) == 'medical-examinations' ) ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-briefcase-medical"></i>
+                            <p>
+                                Quản lý khám bệnh
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview " style="background-color: rgb(22, 53, 138)">
+                            @can('list-medicine-access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.register-medicines.index") }}"
+                                       class="nav-link {{ $request->segment(2) == 'register-medicines' ? 'active active-sub' : '' }}">
+                                        <i class="nav-icon fas fa-user-friends"></i>
+                                        <p>Danh sách đký khám</p>
+                                    </a>
+                                </li>
+
+                            @endcan
+                            @can('medical-examination-access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.medical-examinations.index") }}"
+                                       class="nav-link {{ $request->segment(2) == 'medical-examinations' ? 'active active-sub' : '' }}">
+                                        <i class="nav-icon fas fa-users-cog"></i>
+                                        <p>Danh sách khám bệnh</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('department-access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.departments.index") }}"
+                                       class="nav-link {{ $request->segment(2) == 'departments' ? 'active active-sub' : '' }}">
+                                        <i class="nav-icon fas fa-landmark"></i>
+                                        <p>{{ __('sidebar.department') }}</p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
                     </li>
                 @endcan
                 @can('staff-management-access')

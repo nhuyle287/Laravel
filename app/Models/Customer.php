@@ -16,21 +16,24 @@ class Customer extends Model
     public $message = [];
     public $rules = [
         'name' => 'required',
-        'phone_number' => 'required|min:10|max:10',
-        'email' => 'required|email|unique:customers',
+        'birthday' => 'required',
+        'phone_number' => 'required|min:10|max:10,numeric|unique:customers,phone_number,NULL,id,deleted_at,NULL',
+//        'email' => 'required|email|unique:customers',
     ];
     protected $table = 'customers';
-    protected $fillable = ['id', 'name','phone_number','email', 'address','notes'];
+    protected $fillable = ['id', 'name','phone_number','birthday', 'address','notes'];
     public function __construct()
     {
         parent::__construct();
         $this->message = [
             'name.required' => 'Vui lòng nhập tên khách hàng ',
-            'email.required' => 'Vui lòng nhập email',
-            'email.unique' => 'Email đã tồn tại',
+            'birthday.required' => 'Vui lòng nhập tuổi ',
+//            'email.required' => 'Vui lòng nhập email',
+            'phone_number.unique' => 'Số điện thoại đã tồn tại',
             'phone_number.required' => 'Vui lòng nhập số điện thoại',
-            'phone_number.min' => 'Số điện thoại sai định dạng',
+            'phone_number.min' => 'Số điện thoại sai',
             'phone_number.max' => 'Số điện thoại sai',
+            'phone_number.phone' => 'Số điện thoại sai',
 
 
         ];

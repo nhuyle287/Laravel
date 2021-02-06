@@ -27,7 +27,7 @@
                 <a href="https://www.hoatech.vn/lien-he/" class="nav-link">Liên hệ</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                {{-- <a href="{{route('register.internship.get_register')}}" class="nav-link">Đăng ký thực tập sinh</a> --}}
+                 <a href="{{route('register.medicine.get_register')}}" class="nav-link">Đăng ký khám bệnh</a>
             </li>
         </ul>
 

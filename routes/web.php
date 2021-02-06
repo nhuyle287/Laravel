@@ -132,5 +132,33 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
 
     });
 
+//    Register-medicine
+    Route::prefix('/register-medicines')->group(function(): void {
+        Route::get('/', 'Register_medicineController@index')->name('admin.register-medicines.index');
+        Route::post('/', 'Register_medicineController@searchRow')->name('admin.register-medicines.search-row');
+        Route::post('/update', 'Register_medicineController@update')->name('admin.register-medicines.update');
+//        Route::get('/create', 'MedicineController@entry')->name('admin.medicines.create');
+//        Route::post('/store', 'MedicineController@store')->name('admin.medicines.store');
+//        Route::post('/destroy', 'MedicineController@destroy')->name('admin.medicines.destroy');
+//        Route::post('/destroy-select', 'MedicineController@destroySelect')->name('admin.medicines.destroy-select');
 
+    });
+
+//    medical examination
+    Route::prefix('/medical-examinations')->group(function(): void {
+        Route::get('/', 'Register_medicineController@indexlist')->name('admin.medical-examinations.index');
+        Route::post('/', 'Register_medicineController@searchRowlist')->name('admin.medical-examinations.search-row');
+//        Route::post('/update', 'Register_medicineController@update')->name('admin.register-medicines.update');
+        Route::get('/create', 'Register_medicineController@entry')->name('admin.medical-examinations.create');
+//        Route::post('/store', 'MedicineController@store')->name('admin.medicines.store');
+//        Route::post('/destroy', 'MedicineController@destroy')->name('admin.medicines.destroy');
+//        Route::post('/destroy-select', 'MedicineController@destroySelect')->name('admin.medicines.destroy-select');
+
+    });
+
+});
+
+Route::namespace('Register')->prefix('/register')->group(function ():void{
+    Route::get('/','Register_MedicineController@get_register')->name('register.medicine.get_register');
+    Route::post('/register','Register_MedicineController@register')->name('register.medicine.register');
 });

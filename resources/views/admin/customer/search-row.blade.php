@@ -4,8 +4,9 @@
                 <td><input type="checkbox" class="btn-check" value="{{ $cus->id }}"></td>
                 <td>{{ $cus->id }}</td>
                 <td>{{ $cus->name }}</td>
-                <td class="test">{{ $cus->email }}</td>
+
                 <td>{{ $cus->phone_number }}</td>
+                <td class="test">{{ $cus->birthday }}</td>
 
                 <td class="test">
                     <button type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#viewModal{{ $cus->id }}">
@@ -28,21 +29,23 @@
                                             <td>{{ $cus->name }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Email</td>
-                                            <td>{{ $cus->email }}</td>
+                                            <td>{{ __('customer.phone_number') }}</td>
+                                            <td>{{ $cus->phone_number }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tuổi</td>
+                                            <td>{{$cus->birthday}}</td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('customer.address') }}</td>
                                             <td>{{ $cus->address }}</td>
                                         </tr>
+
                                         <tr>
-                                            <td>{{ __('customer.phone_number') }}</td>
-                                            <td>{{ $cus->phone_number }}</td>
+                                            <td>Email</td>
+                                            <td>{{ $cus->email }}</td>
                                         </tr>
-                                        <tr>
-                                            <td>{{ __('customer.birthday') }}</td>
-                                            <td>{{date('d-m-Y', strtotime($cus->birthday))}}</td>
-                                        </tr>
+
                                         <tr>
                                             <td>{{ __('customer.note') }}</td>
                                             <td>{{ $cus->note }}</td>

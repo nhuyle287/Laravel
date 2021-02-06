@@ -1,30 +1,50 @@
 @extends('layouts.master')
 @section('title')
-    Khách hàng
+    Đăng ký khám
 @stop
 @section('head')
     <link rel="stylesheet" href="{{ asset('../css/responsive.css') }}">
 @stop
 @section('content')
-
     <section class="body-content">
         <div class="card">
 
             <div class="card-header card-header-new">
-                {{ __('customer.create') }}
+                Đăng ký khám bệnh
             </div>
             <div class="card-body">
-                <form action="{{route('admin.customers.store')}}" method="post">
-                    <input type="hidden" name="id" value="{{isset($customer->id) ? $customer->id: ''}}">
+                <form action="{{route('register.medicine.register')}}" method="post">
                     @csrf
                     <div class="clearfix">
                         <div class="panel-body">
+{{--                            <div class="form-row">--}}
+{{--                                <div class="form-group col-md-12">--}}
+{{--                                    <div class="col-xs-12 form-group">--}}
+{{--                                        <label--}}
+{{--                                            class="">Khách hàng <span--}}
+{{--                                                class="aster">*</span></label>--}}
+{{--                                        <select class="js-example-basic-single form-control"--}}
+{{--                                                name="id_customer">--}}
+{{--                                            @foreach($customer as $cus)--}}
+{{--                                                <option value="{{$cus->id}}"> {{$cus->name}}--}}
+{{--                                                    - {{$cus->phone_number}}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                        <p class="help-block text-danger"></p>--}}
+{{--                                        @if($errors->has('name'))--}}
+{{--                                            <p class="help-block text-danger">--}}
+{{--                                                {{ $errors->first('name') }}--}}
+{{--                                            </p>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div class="col-xs-12 form-group">
                                         <label>Họ và tên <label class="content-required">*</label></label>
                                         <input type="text" class="form-control" name="name"
-                                               value="{{isset($customer->name) ? old('name', $customer->name) : old('name')}}">
+                                               value="{{isset($customer->name) ? old('birthday', $customer->birthday) : old('birthday')}}">
                                         <p class="help-block text-danger"></p>
                                         @if($errors->has('name'))
                                             <p class="help-block text-danger">
@@ -34,13 +54,12 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div class="col-xs-12 form-group">
-                                        <label>Số Điện Thoại <label class="content-required">*</label></label>
+                                        <label>Số điện thoại <label class="content-required">*</label></label>
                                         <input type="text" class="form-control" name="phone_number"
-                                               value="{{isset($customer->phone_number) ? old('phone_number', $customer->phone_number) : old('phone_number')}}">
+                                               value="{{isset($customer->phone_number) ? old('phone_number', $customer->phone_number) : old('birthday')}}">
                                         <p class="help-block text-danger"></p>
                                         @if($errors->has('phone_number'))
                                             <p class="help-block text-danger">
@@ -65,46 +84,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <div class="col-xs-12 form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" name="email"
-                                               value="{{isset($customer->email) ? old('email', $customer->email) : old('email')}}">
-                                        <p class="help-block text-danger"></p>
-                                        @if($errors->has('email'))
-                                            <p class="help-block text-danger">
-                                                {{ $errors->first('email') }}
-                                            </p>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <div class="col-xs-12 form-group">
-                                        <label>Địa Chỉ</label>
-                                        <input  class="form-control" name="address"
-                                               value="{{isset($customer->address) ? old('address', $customer->address) : old('address')}}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <div class="col-xs-12 form-group">
-                                        <label>Ghi chú</label>
-                                        <input type="text" class="form-control" name="notes"
-                                               value="{{isset($customer->notes) ? old('notes', $customer->notes) : old('notes')}}">
-                                        <p class="help-block text-danger"></p>
-                                        @if($errors->has('notes'))
-                                            <p class="help-block text-danger">
-                                                {{ $errors->first('notes') }}
-                                            </p>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
                             <hr>
                             <div class="event_ ">
                                 <a href="{{ route('admin.customers.index') }}"
@@ -119,4 +98,14 @@
             </div>
         </div>
     </section>
+    <script>
+
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function () {
+
+            $('.js-example-basic-single').select2();
+        })
+
+
+    </script>
 @stop

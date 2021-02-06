@@ -169,11 +169,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\Laravel\resources\views\admin\register_medicine" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\Laravel\app\Http\Controllers\Register" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\Laravel\resources\views\admin\register_medicine" />
     </key>
   </component>
   <component name="RunManager" selected="npm.development">

@@ -52,10 +52,10 @@
             </div>
 
             @can('list-medicine-update')
-                <a href="{{route('admin.medical-examinations.create', [$register_medicine->id])}}"
-                   class="btn  btn-secondary btn-xs">Khám</a>
-
-
+                <form action="{{route('admin.medical-examinations.create', [$register_medicine->id])}}" method="get">
+                    <input type="hidden" value="{{$register_medicine->customer_id}}" name="customer_id">
+                    <button type="submit" class="btn  btn-secondary btn-xs">Khám</button>
+                </form>
             @endcan
         </td>
 
@@ -72,46 +72,4 @@
         </div>
     </td>
 </tr>
-{{--cập nhật tình trạng --}}
-{{--<div class="modal" id="myModal">--}}
-{{--    <div class="modal-dialog">--}}
-{{--        <div class="modal-content">--}}
-{{--            <!-- Modal Header -->--}}
-{{--            <div class="modal-header">--}}
-{{--                <h4 class="modal-title">Cập nhật trạng thái</h4>--}}
-{{--            </div>--}}
-{{--            <!-- Modal body -->--}}
-{{--            <div class="modal-body">--}}
-{{--                <form action="{{route('admin.register-medicines.update')}}" method="POST">--}}
-{{--                    @csrf--}}
-{{--                    <input type="hidden" name="id" id="id" value="">--}}
-{{--                    <div class="form-group">--}}
 
-{{--                        <select--}}
-{{--                            class="form-control" name="status" id="transaction">--}}
-{{--                            @foreach($status as $transaction)--}}
-{{--                                <option value="" selected disabled hidden>Cập nhật giao--}}
-{{--                                    dịch--}}
-{{--                                </option>--}}
-{{--                                <option value="{{$transaction}}">--}}
-{{--                                    {{ucfirst(array_search($transaction,$status))}}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-
-{{--                    </div>--}}
-{{--                    <div class="form-group">--}}
-{{--                    </div>--}}
-{{--                    <button style="background: green;color: white;" type="submit"--}}
-{{--                            class="btn btn-default">Save--}}
-{{--                    </button>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--            <!-- Modal footer -->--}}
-{{--            <div class="modal-footer">--}}
-{{--                <button type="button" class="btn btn-danger" data-dismiss="modal">--}}
-{{--                    Close--}}
-{{--                </button>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}

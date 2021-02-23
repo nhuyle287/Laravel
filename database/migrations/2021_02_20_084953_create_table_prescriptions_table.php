@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableRegisterMedicineTable extends Migration
+class CreateTablePrescriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTableRegisterMedicineTable extends Migration
      */
     public function up()
     {
-        Schema::create('register_medicines', function (Blueprint $table) {
+        Schema::create('prescriptions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('medicine_examination_id')->nullable();
             $table->integer('customer_id')->nullable();
-            $table->integer('medical_examination_id')->nullable();
-            $table->integer('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +29,6 @@ class CreateTableRegisterMedicineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('register_medicines');
+        Schema::dropIfExists('prescriptions');
     }
 }

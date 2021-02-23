@@ -11,5 +11,6 @@ class ConstantsModel extends Model
         'Chờ khám' => 0,
         'Khám' => 1,
         'Hủy' => 2,
+        'Đã khám'=>3,
     ];
 }

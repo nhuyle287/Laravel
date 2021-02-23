@@ -17,7 +17,7 @@ class Customer extends Model
     public $rules = [
         'name' => 'required',
         'birthday' => 'required',
-        'phone_number' => 'required|min:10|max:10,numeric|unique:customers,phone_number,NULL,id,deleted_at,NULL',
+        'phone_number' => 'required|min:10|max:10|unique:customers,phone_number,NULL,id,deleted_at,NULL',
 //        'email' => 'required|email|unique:customers',
     ];
     protected $table = 'customers';
@@ -33,7 +33,7 @@ class Customer extends Model
             'phone_number.required' => 'Vui lòng nhập số điện thoại',
             'phone_number.min' => 'Số điện thoại sai',
             'phone_number.max' => 'Số điện thoại sai',
-            'phone_number.phone' => 'Số điện thoại sai',
+//            'phone_number.phone' => 'Số điện thoại sai',
 
 
         ];

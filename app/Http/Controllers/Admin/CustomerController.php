@@ -42,6 +42,7 @@ class CustomerController extends AdminController
     {
 
         $customer = ($request->id) ? Customer::find($request->id) : new Customer();
+        dd($customer);
         return view('admin.customer.edit-add', compact('customer'));
     }
 
@@ -54,19 +55,10 @@ class CustomerController extends AdminController
     //nút save
     public function store(Request $request)
     {
-        //tạo mới đối tượng khi không có request( request trả về null)
         $cus = new Customer();
-
-//        dd($auth);
-//trong trường hợp chỉnh sửa (trả về id của đối tượng muốn chỉnh sửa)
         if ($request->id) {
             $cus = Customer::find($request->id);
-            //để cho chỉnh sửa email
-            //$cus->id; trỏ tới id để lấy thông tin chỉnh sửa
-            //:customers,email -> customers là bảng, email là cột
-            //'required|email|unique thay đổi luật trong trường hợp ngoại lệ
-
-            $cus->rules['email'] = 'required|email|unique:customers,email,' . $cus->id;
+            $cus->rules['phone_number'] = 'required|min:10|max:10|unique:customers,phone_number,' . $cus->id.',id,deleted_at,NULL';
         }
         //đánh giá xét duyệt có đúng với bên model không nếu fails thì trở về màn hình nhập + hiện thông báo lỗi
         $validator = $this->validateInput($request->all(), $cus->rules, $cus->message);
@@ -79,10 +71,7 @@ class CustomerController extends AdminController
         $cus->address = $request->address;
         $cus->birthday = $request->birthday;
         $cus->notes = $request->notes;
-        // chuyển đổi ngày tháng năm người dùng giống mysql trước khi đưa vào database
-        //$request->birthday lấy name ngoài edit-add.blade.php
 
-//        dd($request['birthday']);
         $cus->fill($request->all());
         try {
 

@@ -34,7 +34,7 @@ class Register_MedicineController extends RegisterController
             $cus_id=$cus->id;
             $cus_medicine=new Register_Medicine();
             $cus_medicine->customer_id=$cus_id;
-            $cus_medicine->status=0;
+            $cus_medicine->status=1;
             try {
 
                 $cus_medicine->save();

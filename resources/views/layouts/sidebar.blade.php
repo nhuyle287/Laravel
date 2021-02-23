@@ -48,7 +48,7 @@
                         </a>
                     </li>
                 @endcan
-                @can('list-medicine-managerment-access')
+                @can('list-medicine-management-access')
                     <li class="nav-item has-treeview {{ ($request->segment(2) == 'register-medicine' || $request->segment(2) == 'medical-examinations' ) ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="#" class="nav-link">
                             <i class="fas fa-briefcase-medical"></i>
@@ -60,10 +60,10 @@
                         <ul class="nav nav-treeview " style="background-color: rgb(22, 53, 138)">
                             @can('list-medicine-access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.register-medicines.index") }}"
+                                    <a href="{{ route("admin.history-examinations.index") }}"
                                        class="nav-link {{ $request->segment(2) == 'register-medicines' ? 'active active-sub' : '' }}">
                                         <i class="nav-icon fas fa-user-friends"></i>
-                                        <p>Danh sách đký khám</p>
+                                        <p>Lịch sử khám</p>
                                     </a>
                                 </li>
 

@@ -18,4 +18,9 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+//    public function testApplication()
+//    {
+//        $response = $this->withSession(['foo' => 'bar'])
+//            ->get('/');
+//    }
 }

@@ -25,7 +25,8 @@ class PermissionsTableSeeder extends Seeder
         'user',
         'medicine',
         'list-medicine-management',
-        'medical-examination'
+        'medical-examination',
+        'list-medicine'
     ];
 
     const PERMISSIONS = [

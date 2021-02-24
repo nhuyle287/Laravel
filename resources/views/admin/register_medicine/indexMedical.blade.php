@@ -51,7 +51,7 @@
                                             <i class="fa fa-trash"> </i> Xóa
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.customers.destroy-select') }}" method="POST">
+                                    <form action="{{ route('admin.medical-examinations.destroy-select') }}" method="POST">
                                         @csrf
                                         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -214,17 +214,7 @@
 
         });
     </script>
-{{--    <script type="text/javascript">--}}
-{{--        //update transaction--}}
-{{--        $('#myModal').on('show.bs.modal', function (event) {--}}
-{{--            var button = $(event.relatedTarget)--}}
-{{--            var transaction = button.data('transaction')--}}
-{{--            var id = button.data('id')--}}
-{{--            var modal = $(this)--}}
-{{--            modal.find('.modal-body #transaction option:selected').text();--}}
-{{--            modal.find('.modal-body #id').val(id);--}}
-{{--        })--}}
-{{--    </script>--}}
+
 
 @stop
 

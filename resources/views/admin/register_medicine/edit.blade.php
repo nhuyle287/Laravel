@@ -192,18 +192,49 @@
                                 </div>
 
                             </div>
+                            <br>
+                            <hr>
 
 
                             <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <div class="col-xs-12 form-group">
-                                        <label>Ghi chú</label>
-                                        <input type="text" class="form-control" name="notes"
-                                               value="{{isset($customer->notes) ? old('notes', $customer->notes) : old('notes')}}">
+                                <div class="form-group col-md-4">
+                                    <div class="col-xs-6 form-group">
+
+                                        <input type="checkbox" id="price_public"  name="price_public" style="width: min-content"
+                                               value="">
+                                        <label class="col-xs-8">Công khám</label>
                                         <p class="help-block text-danger"></p>
-                                        @if($errors->has('notes'))
+                                        @if($errors->has('price_public'))
                                             <p class="help-block text-danger">
-                                                {{ $errors->first('notes') }}
+                                                {{ $errors->first('price_public') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="col-xs-6 form-group">
+
+                                        <input type="checkbox" id="ECG"  name="ECG" style="width: min-content"
+                                               value="">
+                                        <label class="col-xs-8">ECG</label>
+                                        <p class="help-block text-danger"></p>
+                                        @if($errors->has('ECG'))
+                                            <p class="help-block text-danger">
+                                                {{ $errors->first('ECG') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="col-xs-6 form-group">
+
+                                        <input type="checkbox" id="blood_sugar"  name="blood_sugar" style="width: min-content"
+                                               value="">
+                                        <label class="col-xs-8">Đường huyết</label>
+                                        <p class="help-block text-danger"></p>
+                                        @if($errors->has('blood_sugar'))
+                                            <p class="help-block text-danger">
+                                                {{ $errors->first('blood_sugar') }}
                                             </p>
                                         @endif
                                     </div>
@@ -211,7 +242,7 @@
                             </div>
                             <hr>
                             <div class="event_ ">
-                                <a href="{{ route('admin.customers.index') }}"
+                                <a href="{{ route('admin.medical-examinations.index') }}"
                                    class="btn btn-secondary">{{ __('general.back') }}</a>
                                 <button class="btn btn-danger">{{ __('general.save') }}</button>
 
@@ -261,6 +292,17 @@
     <script>
         $(document).ready(function (){
             $('.js-example-basic-single').select2();
+
+            $('#price_public').change(function (){
+                $(this).val(this.checked ? "TRUE" : "FALSE");
+            })
+
+            $('#ECG').change(function (){
+                $(this).val(this.checked ? "TRUE" : "FALSE");
+            })
+            $('#blood_sugar').change(function (){
+                $(this).val(this.checked ? "TRUE" : "FALSE");
+            })
         });
 
         function selectNamedomain(obj) {

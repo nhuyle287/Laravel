@@ -51,12 +51,13 @@ class Register_Medicine extends Model
         $register_medicine=DB::table('register_medicines')
             ->join('customers as c','c.id','=','register_medicines.customer_id')
             ->join('medical_examinations as me_ex','me_ex.id','=','register_medicines.medical_examination_id')
-            ->leftJoin('prescriptions as pre','pre.medicine_examination_id','=','me_ex.id')
-            ->leftJoin('prescript_medicine as pre_me','pre_me.prescription_id','=','pre.id')
+//            ->leftJoin('prescriptions as pre','pre.medicine_examination_id','=','me_ex.id')
+//            ->leftJoin('prescript_medicine as pre_me','pre_me.prescription_id','=','pre.id')
             ->Where('register_medicines.status','=',3)
             ->Where('c.name', 'like', '%'.$key.'%')
+//            ->Where('me_ex.date_examination', 'like', '%'.$key.'%')
             ->whereNull('register_medicines.deleted_at')
-            ->select('c.name','c.address','c.phone_number','c.birthday','register_medicines.id as register_id','register_medicines.status','me_ex.*','pre_me.amount_medicine','pre_me.total_price')
+            ->select('c.name','c.address','c.phone_number','c.birthday','register_medicines.id as register_id','register_medicines.status','me_ex.*')
             ->paginate($paginate);
         return $register_medicine;
     }

@@ -38,9 +38,9 @@ class Register_MedicineController extends RegisterController
             try {
 
                 $cus_medicine->save();
-                return redirect(route('admin.customers.index'))->with('success', 'Thành công');
+                return redirect(route('admin.medical-examinations.index'))->with('success', 'Thành công');
             } catch (\Exception $e) {
-                return redirect(route('admin.customers.index'))->with('fail', 'Thất bại');
+                return redirect(route('admin.medical-examinations.index'))->with('fail', 'Thất bại');
 
             }
         }
@@ -48,13 +48,13 @@ class Register_MedicineController extends RegisterController
             $cus_id=$customer->id;
             $cus_medicine=new Register_Medicine();
             $cus_medicine->customer_id=$cus_id;
-            $cus_medicine->status=0;
+            $cus_medicine->status=1;
             try {
 
                 $cus_medicine->save();
-                return redirect(route('admin.customers.index'))->with('success', 'Thành công');
+                return redirect(route('admin.medical-examinations.index'))->with('success', 'Thành công');
             } catch (\Exception $e) {
-                return redirect(route('admin.customers.index'))->with('fail', 'Thất bại');
+                return redirect(route('admin.medical-examinations.index'))->with('fail', 'Thất bại');
 
             }
 

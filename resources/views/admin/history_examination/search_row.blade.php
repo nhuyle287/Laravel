@@ -6,7 +6,8 @@
         <td class="thstyleform">{{$register_medicine->name}}
         </td>
 
-
+        <td class="thstyleform">{{date('d-m-Y', strtotime($register_medicine->date_examination))}}
+        </td>
         <td class="thstyleform">
             <a href="{{route("admin.history-examinations.show",$register_medicine->id)}}" class="btn btn-xs btn-info"                                                    >
                 {{ __('general.view') }}

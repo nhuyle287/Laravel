@@ -103,10 +103,31 @@ class Register_medicineController extends AdminController
         $register_medicine =new Register_Medicine;
         $medical_examination = new Medical_Examination();
         $prescription = new Prescription();
-        $prescript_medicine = new Prescript_Medicine();
+
 //        dd($request->all());
 //        medical_examination
 
+        if($request->price_public===TRUE)
+        {
+            $price_public=20000;
+        }
+        else{
+            $price_public=0;
+        }
+        if($request->ECG===TRUE)
+        {
+            $ECG=20000;
+        }
+        else{
+            $ECG=0;
+        }
+        if($request->blood_sugar===TRUE)
+        {
+            $blood_sugar=20000;
+        }
+        else{
+            $blood_sugar=0;
+        }
         $date_medicine = now()->toDateString('Y-m-d');
         $medical_examination->date_examination = $date_medicine;
         $medical_examination->circuit=$request->circuit;
@@ -114,8 +135,11 @@ class Register_medicineController extends AdminController
         $medical_examination->breathing=$request->breathing;
         $medical_examination->blood_pressure = $request->blood_pressure;
         $medical_examination->diagnostic=$request->diagnostic;
-        $medical_examination->price_dif = 0;
+//        $medical_examination->price_dif = 0;
         $medical_examination->total_price=0;
+        $medical_examination->price_public=$price_public;
+        $medical_examination->ECG = $ECG;
+        $medical_examination->blood_sugar=$blood_sugar;
         $medical_examination->save();
 
 //        prescription
@@ -129,28 +153,62 @@ class Register_medicineController extends AdminController
 //        prescript_medicine
         $prescription_id=$prescription->id;
         $list_medicine=$request->list_datecc;
+        $list_totalprice=[];
+//        dd($list_medicine);
         if (is_array($list_medicine) || is_object($list_medicine))
+        {
             foreach ($list_medicine as $key => $value) {
                 $list_medicine = explode(",", $value);
 //                dd($list_medicine);
-
+                $prescript_medicine = new Prescript_Medicine();
+                $total_price=(int)$list_medicine[5];
                 $prescript_medicine->medicine_id = (int)$list_medicine[1];
                 $prescript_medicine->prescription_id =$prescription_id;
                 $prescript_medicine->amount_medicine = (int)$list_medicine[3];
                 $prescript_medicine->total_price = (int)$list_medicine[5];
+                array_push($list_totalprice, $total_price);
+
                 $prescript_medicine->save();
-                print_r($value);
+//                print_r($prescript_medicine->id);
             }
+        }
+        $sum=0;
+        foreach ($list_totalprice as $key=>$value)
+        {
+            $sum=$sum+(int)$value;
+        }
+//        dd($sum);
         try {
                 $register_medicine->where('customer_id',$customer_id)->update(['medical_examination_id'=>$medical_examination_id,'status'=>3]);
-            return redirect(route('admin.medical-examinations.index'))->with('success', 'Khám bệnh thành công');
+//            $medical_examination=new Medical_Examination();
+            $medical_examination->where('id',$medical_examination_id)->update(['total_price'=>$sum]);
+            return redirect(route('admin.history-examinations.index'))->with('success', 'Khám bệnh thành công');
         } catch (\Exception $e) {
             // echo($e);
 //            return response()->json(['message' => 'Fail', 'status' => 0]);
-            return redirect(route('admin.medical-examinations.index'))->with('fail', 'Khám bệnh thất bại');
+            return redirect(route('admin.history-examinations.index'))->with('fail', 'Khám bệnh thất bại');
 
         }
     }
 
+
+    public function destroySelect(Request $request)
+    {
+        try {
+            $allVals = explode(',', $request->allValsDelete[0]);
+            if ($allVals[0] !== "") {
+                foreach ($allVals as $item) {
+                    $register_medicine = Register_Medicine::find($item);
+                    $register_medicine->delete();
+                }
+                return redirect()->back()->with('success', __('general.delete_success'));
+            } else {
+                return redirect()->back()->with('fail', 'Vui lòng chọn dòng cần xóa');
+            }
+
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('fail', __('general.delete_fail'));
+        }
+    }
 
 }

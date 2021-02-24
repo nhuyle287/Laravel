@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Lịch sử khám
+@stop
 @section('head')
     <link rel="stylesheet" href="css/responsive.css">
     <style>
@@ -6,6 +9,7 @@
 
     </style>
 @stop
+
 @section('content')
 
     <section class="content">
@@ -20,7 +24,7 @@
                    </div>
                </div>
                <div class="card-body">
-                   <table class="table table-bordered table-striped">
+                   <table class="table">
                        <tr>
                            <th>Khách hàng</th>
                            <td>{{ $register_medicines->name }}</td>
@@ -42,24 +46,23 @@
                            <th>Nhịp thở</th>
                            <td>{{ $register_medicines->breathing }}</td>
                        </tr>
-                       <tr>
 
-                       </tr>
                    </table>
                    <br/>
                    <table class="table table-bordered table-striped">
+                       <tr>
+                           <th>Thuốc</th>
+
+                           <th>Giá</th>
+
+                           <th>Số lượng</th>
+
+                           <th>Thành tiền</th>
+
+                       </tr>
                        @if(count($medicines)>0)
                            @foreach($medicines as $me)
-                               <tr>
-                                   <th>Thuốc</th>
 
-                                   <th>Giá</th>
-
-                                   <th>Số lượng</th>
-
-                                   <th>Thành tiền</th>
-
-                               </tr>
                                <tr>
                                    <td>
                                        {{$me->name}}

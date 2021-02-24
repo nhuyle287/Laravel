@@ -152,7 +152,7 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
         Route::get('/create', 'Register_medicineController@entry')->name('admin.medical-examinations.create');
         Route::post('/store', 'Register_medicineController@store')->name('admin.medical-examinations.store');
 //        Route::post('/destroy', 'MedicineController@destroy')->name('admin.medicines.destroy');
-//        Route::post('/destroy-select', 'MedicineController@destroySelect')->name('admin.medicines.destroy-select');
+        Route::post('/destroy-select', 'Register_medicineController@destroySelect')->name('admin.medical-examinations.destroy-select');
 
     });
 //    history examination
@@ -161,11 +161,8 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
         Route::get('/', 'MedicalExaminationController@index')->name('admin.history-examinations.index');
         Route::post('/', 'MedicalExaminationController@searchRow')->name('admin.history-examinations.search-row');
         Route::get('/{id}/show', 'MedicalExaminationController@show')->name('admin.history-examinations.show');
-//        Route::post('/update', 'Register_medicineController@update')->name('admin.register-medicines.update');
-//        Route::get('/create', 'Register_medicineController@entry')->name('admin.medical-examinations.create');
-//        Route::post('/store', 'Register_medicineController@store')->name('admin.medical-examinations.store');
-//        Route::post('/destroy', 'MedicineController@destroy')->name('admin.medicines.destroy');
-//        Route::post('/destroy-select', 'MedicineController@destroySelect')->name('admin.medicines.destroy-select');
+
+        Route::post('/destroy-select', 'MedicalExaminationController@destroySelect')->name('admin.history-examinations.destroy-select');
 
     });
 

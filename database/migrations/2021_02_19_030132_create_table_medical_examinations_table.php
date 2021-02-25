@@ -21,8 +21,9 @@ class CreateTableMedicalExaminationsTable extends Migration
             $table->integer('breathing')->nullable();
             $table->integer('blood_pressure')->nullable();
             $table->string('diagnostic')->nullable();
-            $table->float('price')->nullable();
-            $table->float('price_dif')->nullable();
+            $table->integer('price_public')->nullable();
+            $table->integer('ECG')->nullable();
+            $table->integer('blood_sugar')->nullable();
             $table->float('total_price')->nullable();
             $table->timestamps();
             $table->softDeletes();

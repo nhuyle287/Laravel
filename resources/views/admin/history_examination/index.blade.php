@@ -1,12 +1,10 @@
 @extends('layouts.master')
 @section('title')
-  Lịch sử khám bệnh
+    Lịch sử khám bệnh
 @stop
 @section('head')
     <link rel="stylesheet" href="css/responsive.css">
     <style>
-
-
 
 
     </style>
@@ -56,7 +54,7 @@
                                             <i class="fa fa-trash"> </i> Xóa
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.customers.destroy-select') }}" method="POST">
+                                    <form action="{{ route('admin.history-examinations.destroy-select') }}" method="POST">
                                         @csrf
                                         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,7 +62,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title"
-                                                            id="exampleModalLabel">Khám bệnh</h5>
+                                                            id="exampleModalLabel">Lịch sử khám bệnh</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -103,9 +101,9 @@
 
                         </div>
                         <div style="float: right">
-{{--                            <div class="background-popup" style="margin: 2rem 0 2rem 0">--}}
+                            {{--                            <div class="background-popup" style="margin: 2rem 0 2rem 0">--}}
 
-{{--                            </div>--}}
+                            {{--                            </div>--}}
                             {{--                            <div style="float: left">--}}
                             {{--                                <a style="margin-right: 5px" class="btn btn-warning" href="#" role="button"><i--}}
                             {{--                                        class="fas fa-search"></i></a>--}}
@@ -129,6 +127,9 @@
                                     <th class="thstyleform">STT</th>
                                     <th class="thstyleform">
                                         Khách hàng
+                                    </th>
+                                    <th class="thstyleform">
+                                        Ngày khám
                                     </th>
 
                                     <th class="thstyleform">&nbsp;</th>
@@ -155,22 +156,9 @@
 
 @section('javascript')
     <script type="text/javascript">
-        // function show(id)
-        // {
-        //     $('.background-popup').show();
-        //     $('.background-popup').addClass('d-flex align-items-center justify-content-center');
-        //     $('.background-popup').load("/admin/history-examinations/" + id+"/show/")
-        // }
+
         $(document).ready(function () {
-
-            $(document).on('click', '#cancel-button', function() {
-                $('.background-popup').hide();
-                $('.background-popup').removeClass('d-flex align-items-center justify-content-center');
-                $('.background-popup').empty();
-            })
-
             $("#check-all").on('click', function () {
-                // alert('a')
                 $('input:checkbox').not(this).prop('checked', this.checked);
             });
 
@@ -188,7 +176,7 @@
             function fetch_data(page, amountRow, query) {
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('admin.register-medicines.search-row') }}?page=' + page + '&amount=' + amountRow + '&key=' + query,
+                    url: '{{ route('admin.history-examinations.search-row') }}?page=' + page + '&amount=' + amountRow + '&key=' + query,
                     success: function (response) {
                         $("tbody").empty();
                         $("tbody").html(response);
@@ -206,8 +194,7 @@
                     }
                 });
                 fetch_data(page, amountRow, key);
-                if(key!="")
-                {
+                if (key != "") {
                     $(document).on('click', '.pagination a', function (event) {
                         event.preventDefault();
                         var amountRow = $("#showRow :selected").val();
@@ -224,27 +211,17 @@
             });
 
 
-
             $("#showRow").on('change', function () {
                 var amountRow = $("#showRow :selected").val();
-                var url = '{{ route('admin.register-medicines.index').'?amount=:amount' }}';
+                var url = '{{ route('admin.history-examinations.index').'?amount=:amount' }}';
                 url = url.replace(':amount', amountRow);
                 window.location.assign(url);
             });
 
+
         });
     </script>
-    <script type="text/javascript">
-        //update transaction
-        $('#myModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var transaction = button.data('transaction')
-            var id = button.data('id')
-            var modal = $(this)
-            modal.find('.modal-body #transaction option:selected').text();
-            modal.find('.modal-body #id').val(id);
-        })
-    </script>
+
 
 @stop
 

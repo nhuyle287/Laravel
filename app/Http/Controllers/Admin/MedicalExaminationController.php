@@ -47,70 +47,6 @@ class MedicalExaminationController extends AdminController
     }
 
 
-    public function entry(Request $request)
-    {
-
-        $customer = $request->customer_id;
-//        dd($customer);
-        $medicine = Medicine::all();
-        $register_medicine = ($request->id) ? Medical_Examination::find($request->id) : new Medical_Examination();
-        return view('admin.register_medicine.edit', compact('customer', 'medicine', 'register_medicine'));
-    }
-
-    public function store(Request $request)
-    {
-        $register_medicine = new Register_Medicine;
-        $medical_examination = new Medical_Examination();
-        $prescription = new Prescription();
-        $prescript_medicine = new Prescript_Medicine();
-        dd($request->all());
-//        medical_examination
-
-        $date_medicine = now()->toDateString('Y-m-d');
-        $medical_examination->date_examination = $date_medicine;
-        $medical_examination->circuit = $request->circuit;
-        $medical_examination->temperature = $request->temperature;
-        $medical_examination->breathing = $request->breathing;
-        $medical_examination->blood_pressure = $request->blood_pressure;
-        $medical_examination->diagnostic = $request->diagnostic;
-        $medical_examination->price_dif = 0;
-        $medical_examination->total_price = 0;
-        $medical_examination->save();
-
-//        prescription
-
-        $customer_id = $request->customer_id;
-        $medical_examination_id = $medical_examination->id;
-        $prescription->medicine_examination_id = $medical_examination_id;
-        $prescription->customer_id = $customer_id;
-        $prescription->save();
-
-//        prescript_medicine
-        $prescription_id = $prescription->id;
-        $list_medicine = $request->list_datecc;
-        if (is_array($list_medicine) || is_object($list_medicine))
-            foreach ($list_medicine as $key => $value) {
-                $list_medicine = explode(",", $value);
-//                dd($list_medicine);
-
-                $prescript_medicine->medicine_id = (int)$list_medicine[1];
-                $prescript_medicine->prescription_id = $prescription_id;
-                $prescript_medicine->amount_medicine = (int)$list_medicine[3];
-                $prescript_medicine->total_price = (int)$list_medicine[5];
-                $prescript_medicine->save();
-                print_r($value);
-            }
-        try {
-            $register_medicine->where('customer_id', $customer_id)->update(['medical_examination_id' => $medical_examination_id, 'status' => 3]);
-            return redirect(route('admin.medical-examinations.index'))->with('success', 'Khám bệnh thành công');
-        } catch (\Exception $e) {
-            // echo($e);
-//            return response()->json(['message' => 'Fail', 'status' => 0]);
-            return redirect(route('admin.medical-examinations.index'))->with('fail', 'Khám bệnh thất bại');
-
-        }
-    }
-
     public function show($id)
     {
 //        dd($id);
@@ -127,5 +63,26 @@ class MedicalExaminationController extends AdminController
             ->select('me.*', 'pre_me.amount_medicine', 'pre_me.total_price')
             ->get();
         return view('admin.history_examination.show', compact('register_medicines', 'medicines'));
+    }
+
+    public function destroySelect(Request $request)
+    {
+        try {
+            $allVals = explode(',', $request->allValsDelete[0]);
+            if ($allVals[0] !== "") {
+                foreach ($allVals as $item) {
+                    $register_medicine=Register_Medicine::where('medical_examination_id',$item);
+                    $register_medicine->delete();
+                    $medical_excamination = Medical_Examination::find($item);
+                    $medical_excamination->delete();
+                }
+                return redirect()->back()->with('success', __('general.delete_success'));
+            } else {
+                return redirect()->back()->with('fail', 'Vui lòng chọn dòng cần xóa');
+            }
+
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('fail', __('general.delete_fail'));
+        }
     }
 }

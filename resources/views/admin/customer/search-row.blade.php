@@ -29,6 +29,10 @@
                                             <td>{{ $cus->name }}</td>
                                         </tr>
                                         <tr>
+                                            <td>ID</td>
+                                            <td>{{ $cus->code }}</td>
+                                        </tr>
+                                        <tr>
                                             <td>{{ __('customer.phone_number') }}</td>
                                             <td>{{ $cus->phone_number }}</td>
                                         </tr>

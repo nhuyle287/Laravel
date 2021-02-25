@@ -29,6 +29,9 @@
             <li class="nav-item d-none d-sm-inline-block">
                  <a href="{{route('register.medicine.get_register')}}" class="nav-link">Đăng ký khám bệnh</a>
             </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{route('register.havecode.get_register_code')}}" class="nav-link">Đăng ký khám bệnh có ID</a>
+            </li>
         </ul>
 
 

@@ -152,7 +152,7 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
         Route::get('/create', 'Register_medicineController@entry')->name('admin.medical-examinations.create');
         Route::post('/store', 'Register_medicineController@store')->name('admin.medical-examinations.store');
 //        Route::post('/destroy', 'MedicineController@destroy')->name('admin.medicines.destroy');
-//        Route::post('/destroy-select', 'MedicineController@destroySelect')->name('admin.medicines.destroy-select');
+        Route::post('/destroy-select', 'Register_medicineController@destroySelect')->name('admin.medical-examinations.destroy-select');
 
     });
 //    history examination
@@ -161,17 +161,22 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
         Route::get('/', 'MedicalExaminationController@index')->name('admin.history-examinations.index');
         Route::post('/', 'MedicalExaminationController@searchRow')->name('admin.history-examinations.search-row');
         Route::get('/{id}/show', 'MedicalExaminationController@show')->name('admin.history-examinations.show');
-//        Route::post('/update', 'Register_medicineController@update')->name('admin.register-medicines.update');
-//        Route::get('/create', 'Register_medicineController@entry')->name('admin.medical-examinations.create');
-//        Route::post('/store', 'Register_medicineController@store')->name('admin.medical-examinations.store');
-//        Route::post('/destroy', 'MedicineController@destroy')->name('admin.medicines.destroy');
-//        Route::post('/destroy-select', 'MedicineController@destroySelect')->name('admin.medicines.destroy-select');
+
+        Route::post('/destroy-select', 'MedicalExaminationController@destroySelect')->name('admin.history-examinations.destroy-select');
 
     });
 
 });
 
 Route::namespace('Register')->prefix('/register')->group(function ():void{
-    Route::get('/','Register_MedicineController@get_register')->name('register.medicine.get_register');
-    Route::post('/register','Register_MedicineController@register')->name('register.medicine.register');
+    Route::get('/','Register_MedicalController@get_register')->name('register.medicine.get_register');
+
+    Route::post('/registerhavecode','Register_MedicalController@register')->name('register.medicine.register');
+    Route::prefix('/havecode')->group(function(): void {
+        Route::get('/havecode','Register_MedicalController@get_register_code')->name('register.havecode.get_register_code');
+        Route::post('/register','Register_MedicalController@register_code')->name('register.havecode.register_code');
+
+    });
+
+
 });

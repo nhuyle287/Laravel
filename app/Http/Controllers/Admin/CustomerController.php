@@ -42,7 +42,7 @@ class CustomerController extends AdminController
     {
 
         $customer = ($request->id) ? Customer::find($request->id) : new Customer();
-        dd($customer);
+//        dd($customer);
         return view('admin.customer.edit-add', compact('customer'));
     }
 
@@ -58,6 +58,8 @@ class CustomerController extends AdminController
         $cus = new Customer();
         if ($request->id) {
             $cus = Customer::find($request->id);
+            $cus_id=$cus->id;
+            $cus->where('id',$cus_id)->update(['code'=>'KH'.$cus_id]);
             $cus->rules['phone_number'] = 'required|min:10|max:10|unique:customers,phone_number,' . $cus->id.',id,deleted_at,NULL';
         }
         //đánh giá xét duyệt có đúng với bên model không nếu fails thì trở về màn hình nhập + hiện thông báo lỗi

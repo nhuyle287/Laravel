@@ -34,7 +34,21 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <div class="col-xs-12 form-group">
+                                        <label>ID <label class="content-required">*</label></label>
+                                        <input type="text" readonly class="form-control" name="code"
+                                               value="{{isset($customer->code) ? old('code', $customer->code) : old('name')}}">
+                                        <p class="help-block text-danger"></p>
+                                        @if($errors->has('code'))
+                                            <p class="help-block text-danger">
+                                                {{ $errors->first('code') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div class="col-xs-12 form-group">

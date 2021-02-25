@@ -38,6 +38,7 @@ class Medicine extends Model
     public function getAll($key, $paginate) {
         $medicine = Medicine::where('medicines.name', 'like', '%'.$key.'%')
             ->orwhere('medicines.producer', 'like', '%'.$key.'%')
+            ->whereNull('medicines.deleted_at')
             ->select('medicines.*')
             ->paginate($paginate);
         return $medicine;

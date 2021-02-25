@@ -169,6 +169,14 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
 });
 
 Route::namespace('Register')->prefix('/register')->group(function ():void{
-    Route::get('/','Register_MedicineController@get_register')->name('register.medicine.get_register');
-    Route::post('/register','Register_MedicineController@register')->name('register.medicine.register');
+    Route::get('/','Register_MedicalController@get_register')->name('register.medicine.get_register');
+
+    Route::post('/registerhavecode','Register_MedicalController@register')->name('register.medicine.register');
+    Route::prefix('/havecode')->group(function(): void {
+        Route::get('/havecode','Register_MedicalController@get_register_code')->name('register.havecode.get_register_code');
+        Route::post('/register','Register_MedicalController@register_code')->name('register.havecode.register_code');
+
+    });
+
+
 });

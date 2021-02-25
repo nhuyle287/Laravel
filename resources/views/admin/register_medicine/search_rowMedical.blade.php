@@ -7,8 +7,8 @@
         </td>
 
 
-        <td class="thstyleform">
-            <button type="button" class="btn btn-xs btn-info" data-toggle="modal"
+        <td class="thstyleform d-flex ">
+            <button type="button" class="btn btn-xs btn-info" data-toggle="modal" style="margin-right: 5px"
                     data-target="#viewModal{{ $register_medicine->id }}">
                 {{ __('general.view') }}
             </button>

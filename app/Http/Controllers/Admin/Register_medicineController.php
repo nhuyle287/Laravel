@@ -106,40 +106,56 @@ class Register_medicineController extends AdminController
 
 //        dd($request->all());
 //        medical_examination
-
-        if($request->price_public===TRUE)
+        if($request->price_public=='TRUE')
         {
             $price_public=20000;
         }
-        else{
+        else {
             $price_public=0;
         }
-        if($request->ECG===TRUE)
+        if($request->ECG=='TRUE')
         {
             $ECG=20000;
         }
-        else{
+        else {
             $ECG=0;
+
         }
-        if($request->blood_sugar===TRUE)
+        if($request->blood_sugar=='TRUE')
         {
             $blood_sugar=20000;
         }
-        else{
+        else {
             $blood_sugar=0;
         }
-        $date_medicine = now()->toDateString('Y-m-d');
-        $medical_examination->date_examination = $date_medicine;
+        $medical_examination->rules['circuit' ]='required';
+        $medical_examination->rules['temperature' ]='required';
+        $medical_examination->rules['breathing' ]='required';
+        $medical_examination->rules['blood_pressure' ]='required';
+        $medical_examination->rules['diagnostic' ]='required';
+        $medical_examination->message['circuit.required'] = 'Vui lòng nhập mạch của khách hàng';
+        $medical_examination->message['temperature.required'] = 'Vui lòng nhập nhiệt độ của khách hàng ';
+        $medical_examination->message['breathing.required'] = 'Vui lòng nhập nhịp thở của khách hàng';
+        $medical_examination->message['blood_pressure.required'] = 'Vui lòng nhập huyết áp của khách hàng ';
+        $medical_examination->message['diagnostic.required'] = 'Vui lòng nhập chuẩn đoán bệnh';
+
         $medical_examination->circuit=$request->circuit;
         $medical_examination->temperature = $request->temperature;
         $medical_examination->breathing=$request->breathing;
         $medical_examination->blood_pressure = $request->blood_pressure;
         $medical_examination->diagnostic=$request->diagnostic;
-//        $medical_examination->price_dif = 0;
-        $medical_examination->total_price=0;
-        $medical_examination->price_public=$price_public;
         $medical_examination->ECG = $ECG;
         $medical_examination->blood_sugar=$blood_sugar;
+        $validator = $this->validateInput(['circuit'=>$request->circuit,'temperature'=> $request->temperature,
+            'breathing'=>$request->breathing,'blood_pressure'=> $request->blood_pressure,
+            'diagnostic'=>$request->diagnostic], $medical_examination->rules, $medical_examination->message);
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        $date_medicine = now()->toDateString('Y-m-d');
+        $medical_examination->date_examination = $date_medicine;
+        $medical_examination->total_price=$request->sum_totalprice;
+        $medical_examination->price_public=$price_public;
         $medical_examination->save();
 
 //        prescription
@@ -153,7 +169,7 @@ class Register_medicineController extends AdminController
 //        prescript_medicine
         $prescription_id=$prescription->id;
         $list_medicine=$request->list_datecc;
-        $list_totalprice=[];
+//        $list_totalprice=[];
 //        dd($list_medicine);
         if (is_array($list_medicine) || is_object($list_medicine))
         {
@@ -161,27 +177,27 @@ class Register_medicineController extends AdminController
                 $list_medicine = explode(",", $value);
 //                dd($list_medicine);
                 $prescript_medicine = new Prescript_Medicine();
-                $total_price=(int)$list_medicine[5];
                 $prescript_medicine->medicine_id = (int)$list_medicine[1];
                 $prescript_medicine->prescription_id =$prescription_id;
-                $prescript_medicine->amount_medicine = (int)$list_medicine[3];
-                $prescript_medicine->total_price = (int)$list_medicine[5];
-                array_push($list_totalprice, $total_price);
+                $prescript_medicine->amount_date = (int)$list_medicine[3];
+                $prescript_medicine->morning = (int)$list_medicine[4];
+                $prescript_medicine->afternoon = (int)$list_medicine[5];
+                $prescript_medicine->everning = (int)$list_medicine[6];
+                $prescript_medicine->night = (int)$list_medicine[7];
+                $prescript_medicine->amount_medicine = (int)$list_medicine[8];
+                $prescript_medicine->total_price = (int)$list_medicine[10];
+//                array_push($list_totalprice, $total_price);
 
                 $prescript_medicine->save();
 //                print_r($prescript_medicine->id);
             }
         }
-        $sum=0;
-        foreach ($list_totalprice as $key=>$value)
-        {
-            $sum=$sum+(int)$value;
-        }
+
+
 //        dd($sum);
         try {
                 $register_medicine->where('customer_id',$customer_id)->update(['medical_examination_id'=>$medical_examination_id,'status'=>3]);
-//            $medical_examination=new Medical_Examination();
-            $medical_examination->where('id',$medical_examination_id)->update(['total_price'=>$sum]);
+
             return redirect(route('admin.history-examinations.index'))->with('success', 'Khám bệnh thành công');
         } catch (\Exception $e) {
             // echo($e);
@@ -196,9 +212,11 @@ class Register_medicineController extends AdminController
     {
         try {
             $allVals = explode(',', $request->allValsDelete[0]);
+
             if ($allVals[0] !== "") {
                 foreach ($allVals as $item) {
-                    $register_medicine = Register_Medicine::find($item);
+                    $register_medicine = Register_Medicine::where('id',$item);
+//                    dd($register_medicine);
                     $register_medicine->delete();
                 }
                 return redirect()->back()->with('success', __('general.delete_success'));

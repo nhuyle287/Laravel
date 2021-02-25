@@ -43,6 +43,7 @@ class Register_Medicine extends Model
             ->join('customers as c','c.id','=','register_medicines.customer_id')
             ->Where('register_medicines.status','=',1)
             ->Where('c.name', 'like', '%'.$key.'%')
+            ->whereNull('register_medicines.deleted_at')
             ->select('c.name','c.id as customer_id','register_medicines.id','register_medicines.status')
             ->paginate($paginate);
         return $register_medicine;

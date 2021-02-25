@@ -20,17 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c49a491-a68a-4f99-88eb-789ad3f58572" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/register/register_medicine_code.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MedicalExaminationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MedicalExaminationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Register_medicineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Register_medicineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Register/Register_MedicineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Register/Register_MedicineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Register/Register_MedicineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Register/Register_MedicalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Medical_Examination.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Medical_Examination.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Register_Medicine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Register_Medicine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_19_030132_create_table_medical_examinations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_19_030132_create_table_medical_examinations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/history_examination/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/history_examination/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/history_examination/search_row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/history_examination/search_row.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_26_123824_create_table_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_26_123824_create_table_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_19_032642_create_table_prescript_medicine_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_19_032642_create_table_prescript_medicine_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/edit-add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/edit-add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/search-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/search-row.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/history_examination/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/history_examination/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/register_medicine/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/register_medicine/indexMedical.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/indexMedical.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/register_medicine/search_rowMedical.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/search_rowMedical.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/nav-header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/nav-header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/register/register_medicine.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/register/register_medicine.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +241,8 @@
       <workItem from="1613878770969" duration="602000" />
       <workItem from="1613879404791" duration="8626000" />
       <workItem from="1614084267063" duration="6632000" />
-      <workItem from="1614173306176" duration="6564000" />
+      <workItem from="1614173306176" duration="16565000" />
+      <workItem from="1614224997361" duration="7509000" />
     </task>
     <servers />
   </component>

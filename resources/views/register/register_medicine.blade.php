@@ -57,21 +57,6 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div class="col-xs-12 form-group">
-                                        <label>Số điện thoại <label class="content-required">*</label></label>
-                                        <input type="text" class="form-control" name="phone_number"
-                                               value="{{isset($customer->phone_number) ? old('phone_number', $customer->phone_number) : old('birthday')}}">
-                                        <p class="help-block text-danger"></p>
-                                        @if($errors->has('phone_number'))
-                                            <p class="help-block text-danger">
-                                                {{ $errors->first('phone_number') }}
-                                            </p>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <div class="col-xs-12 form-group">
                                         <label>Tuổi <label class="content-required">*</label></label>
                                         <input type="number" class="form-control" name="birthday"
                                                value="{{isset($customer->birthday) ? old('birthday', $customer->birthday) : old('birthday')}}">
@@ -84,6 +69,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <div class="col-xs-12 form-group">
+                                        <label>Số điện thoại</label>
+                                        <input type="text" class="form-control" name="phone_number"
+                                               value="{{isset($customer->phone_number) ? old('phone_number', $customer->phone_number) : old('birthday')}}">
+                                        <p class="help-block text-danger"></p>
+                                        @if($errors->has('phone_number'))
+                                            <p class="help-block text-danger">
+                                                {{ $errors->first('phone_number') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
                             <hr>
                             <div class="event_ ">
                                 <a href="{{ route('admin.customers.index') }}"

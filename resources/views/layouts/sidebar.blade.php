@@ -49,7 +49,7 @@
                     </li>
                 @endcan
                 @can('list-medicine-management-access')
-                    <li class="nav-item has-treeview {{ ($request->segment(2) == 'register-medicine' || $request->segment(2) == 'medical-examinations' ) ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
+                    <li class="nav-item has-treeview {{ ($request->segment(2) == 'history-examinations' || $request->segment(2) == 'medical-examinations' ) ? 'menu-open' : '' }}" style="background-color: #a9a9a95e; margin-bottom: 0.25rem">
                         <a href="#" class="nav-link">
                             <i class="fas fa-briefcase-medical"></i>
                             <p>
@@ -61,7 +61,7 @@
                             @can('list-medicine-access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.history-examinations.index") }}"
-                                       class="nav-link {{ $request->segment(2) == 'register-medicines' ? 'active active-sub' : '' }}">
+                                       class="nav-link {{ $request->segment(2) == 'history-examinations' ? 'active active-sub' : '' }}">
                                         <i class="nav-icon fas fa-user-friends"></i>
                                         <p>Lịch sử khám</p>
                                     </a>
@@ -77,15 +77,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('department-access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.departments.index") }}"
-                                       class="nav-link {{ $request->segment(2) == 'departments' ? 'active active-sub' : '' }}">
-                                        <i class="nav-icon fas fa-landmark"></i>
-                                        <p>{{ __('sidebar.department') }}</p>
-                                    </a>
-                                </li>
-                            @endcan
+
                         </ul>
                     </li>
                 @endcan

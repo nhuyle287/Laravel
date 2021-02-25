@@ -17,6 +17,11 @@ class CreateTablePrescriptMedicineTable extends Migration
             $table->increments('id');
             $table->integer('medicine_id')->nullable();
             $table->integer('prescription_id')->nullable();
+            $table->integer('amount_date')->nullable();
+            $table->integer('morning')->nullable();
+            $table->integer('afternoon')->nullable();
+            $table->integer('everning')->nullable();
+            $table->integer('night')->nullable();
             $table->integer('amount_medicine')->nullable();
             $table->integer('total_price')->nullable();
             $table->timestamps();

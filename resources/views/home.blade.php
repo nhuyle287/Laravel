@@ -2,14 +2,29 @@
 @section('title')
     Dashboard
 @stop
-@section('css')
-{{--    <script src="http://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>--}}
-{{--    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>--}}
+@section('head')
+    <link rel="stylesheet" href="css/login.css">
+    {{--    <script src="http://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>--}}
+    {{--    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>--}}
     <style>
         canvas {
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
+        }
+
+        #month {
+            margin-left: 5rem;
+        }
+
+        #chart {
+            margin-top: 0.5rem;
+            border: 1px solid #d2d0d0;
+            border-radius: 5px;
+            width: 500px;
+            background-color: white;
+            padding: 0.5rem;
+            box-shadow: 5px 5px 8px #888888;
         }
     </style>
 @stop
@@ -45,7 +60,237 @@
     </div>
     <section class="content">
         <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
+                        <div class="info-box-content">
+                            <span class="info-box-text fadeIn first">Bệnh Nhân</span>
+                            <span class="info-box-number fadeIn first">
+                  {{$customer_count}}
+
+                </span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-gray-dark elevation-1"><i class="fas fa-hand-holding-medical"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text fadeIn first">Khám bệnh</span>
+                            <span class="info-box-number fadeIn first">{{$medical_examination}}</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+            {{--                <div class="col-12 col-sm-6 col-md-3">--}}
+            {{--                    <div class="info-box mb-3">--}}
+            {{--                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>--}}
+
+            {{--                        <div class="info-box-content">--}}
+            {{--                            <span class="info-box-text">Sales</span>--}}
+            {{--                            <span class="info-box-number">760</span>--}}
+            {{--                        </div>--}}
+            {{--                        <!-- /.info-box-content -->--}}
+            {{--                    </div>--}}
+            {{--                    <!-- /.info-box -->--}}
+            {{--                </div>--}}
+            {{--                <!-- /.col -->--}}
+            {{--                <div class="col-12 col-sm-6 col-md-3">--}}
+            {{--                    <div class="info-box mb-3">--}}
+            {{--                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>--}}
+
+            {{--                        <div class="info-box-content">--}}
+            {{--                            <span class="info-box-text">New Members</span>--}}
+            {{--                            <span class="info-box-number">2,000</span>--}}
+            {{--                        </div>--}}
+            {{--                        <!-- /.info-box-content -->--}}
+            {{--                    </div>--}}
+            {{--                    <!-- /.info-box -->--}}
+            {{--                </div>--}}
+            <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+
+            <!-- BAR CHART -->
+            <div>
+                <button id="month" class="btn sm-btn btn-default">Danh thu theo tháng</button>
+                <button id="year" class="btn sm-btn btn-default">Danh thu theo năm</button>
+            </div>
+            <div id="chart">
+                <canvas id="barChart"></canvas>
+            </div>
+
+
+            <script>
+                var month = <?php echo $month; ?>;
+
+                var price = <?php echo $price; ?>;
+
+                var year_ = <?php echo $year; ?>;
+
+                var price_year = <?php echo $price_year; ?>;
+
+                year_list = [];
+                for (i = 0; i < year_.length; i++) {
+                    year_list.push(year_[i].year);
+                }
+                // console.log(year_[0].year)
+                // console.log(year_list)
+                var barChartData = {
+                    labels: month,
+                    datasets: [{
+                        label: 'Tháng',
+                        "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)"],
+                        "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)"],
+                        "borderWidth": 1,
+                        data: price
+                    }]
+                };
+                var barChartDataYear = {
+                    labels: year_list,
+                    datasets: [{
+                        label: 'Năm',
+                        "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)"],
+                        "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)"],
+                        "borderWidth": 1,
+                        data: price_year
+                    }]
+                };
+                $(document).ready(function () {
+                    $('#year').on('click', function () {
+                        var ctx = document.getElementById("barChart").getContext("2d");
+                        window.myBar = new Chart(ctx, {
+                            // type: 'horizontalBar',
+                            type: 'bar',
+                            data: barChartDataYear,
+                            options: {
+                                elements: {
+                                    rectangle: {
+                                        borderWidth: 2,
+                                        borderColor: '#c1c1c1',
+                                        borderSkipped: 'bottom'
+                                    }
+                                },
+                                responsive: true,
+                                title: {
+                                    display: true,
+                                    text: 'Doanh thu theo năm'
+                                }
+                            }
+                        });
+                    });
+                    $('#month').on('click', function () {
+                        var ctx = document.getElementById("barChart").getContext("2d");
+                        window.myBar = new Chart(ctx, {
+                            // type: 'horizontalBar',
+                            type: 'bar',
+                            data: barChartData,
+                            options: {
+                                elements: {
+                                    rectangle: {
+                                        borderWidth: 2,
+                                        borderColor: '#c1c1c1',
+                                        borderSkipped: 'bottom'
+                                    }
+                                },
+                                responsive: true,
+                                title: {
+                                    display: true,
+                                    text: 'Doanh thu theo tháng'
+                                }
+                            }
+                        })
+                    });
+                })
+                // var areaChartData = {
+                //     labels  : month,
+                //     datasets: [
+                //         {
+                //             label               : 'Tháng',
+                //             backgroundColor     : 'rgba(60,141,188,0.9)',
+                //             borderColor         : 'rgba(60,141,188,0.8)',
+                //             pointRadius          : false,
+                //             pointColor          : '#3b8bba',
+                //             pointStrokeColor    : 'rgba(60,141,188,1)',
+                //             pointHighlightFill  : '#fff',
+                //             pointHighlightStroke: 'rgba(60,141,188,1)',
+                //             data                : price
+                //         },
+                //         {
+                //             label               : 'Năm',
+                //             backgroundColor     : 'rgba(210, 214, 222, 1)',
+                //             borderColor         : 'rgba(210, 214, 222, 1)',
+                //             pointRadius         : false,
+                //             pointColor          : 'rgba(210, 214, 222, 1)',
+                //             pointStrokeColor    : '#c1c7d1',
+                //             pointHighlightFill  : '#fff',
+                //             pointHighlightStroke: 'rgba(220,220,220,1)',
+                //             data                : price_year
+                //         },
+                //     ]
+                // }
+
+                window.onload = function () {
+
+                    //-------------
+                    //- BAR CHART -
+                    //-------------
+                    // var barChartCanvas = $('#barChart').get(0).getContext('2d')
+                    // var barChartData = jQuery.extend(true, {}, areaChartData)
+                    // var temp0 = areaChartData.datasets[0]
+                    // var temp1 = areaChartData.datasets[1]
+                    // barChartData.datasets[0] = temp1
+                    // barChartData.datasets[1] = temp0
+                    //
+                    // var barChartOptions = {
+                    //     responsive              : true,
+                    //     maintainAspectRatio     : false,
+                    //     datasetFill             : false
+                    // }
+                    //
+                    // var barChart = new Chart(barChartCanvas, {
+                    //     type: 'bar',
+                    //     data: barChartData,
+                    //     options: barChartOptions
+                    // })
+
+
+                    var ctx = document.getElementById("barChart").getContext("2d");
+                    window.myBar = new Chart(ctx, {
+                        // type: 'horizontalBar',
+                        type: 'bar',
+                        data: barChartData,
+                        options: {
+                            elements: {
+                                rectangle: {
+                                    borderWidth: 2,
+                                    borderColor: '#c1c1c1',
+                                    borderSkipped: 'bottom'
+                                }
+                            },
+                            responsive: true,
+                            title: {
+                                display: true,
+                                text: 'Doanh thu theo tháng'
+                            }
+                        }
+                    });
+                };
+            </script>
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

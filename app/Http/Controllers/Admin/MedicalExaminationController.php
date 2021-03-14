@@ -47,6 +47,25 @@ class MedicalExaminationController extends AdminController
     }
 
 
+    public function update(Request $request)
+    {
+
+//dd($request->all());
+        $history=Medical_Examination::find($request->id);
+//        dd($history);
+        try {
+            $history->where('id',$request->id)->update(['diagnostic'=>$request->diagnostic]);
+
+            return redirect(route('admin.history-examinations.index'))->with('success', 'Thành công');
+        } catch (\Exception $e) {
+            // echo($e);
+//            return response()->json(['message' => 'Fail', 'status' => 0]);
+            return redirect(route('admin.history-examinations.index'))->with('fail', 'Thất bại');
+
+        }
+
+    }
+
     public function show($id)
     {
 //        dd($id);

@@ -161,7 +161,7 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
         Route::get('/', 'MedicalExaminationController@index')->name('admin.history-examinations.index');
         Route::post('/', 'MedicalExaminationController@searchRow')->name('admin.history-examinations.search-row');
         Route::get('/{id}/show', 'MedicalExaminationController@show')->name('admin.history-examinations.show');
-
+        Route::post('/update', 'MedicalExaminationController@update')->name('admin.history-examinations.update');
         Route::post('/destroy-select', 'MedicalExaminationController@destroySelect')->name('admin.history-examinations.destroy-select');
 
     });

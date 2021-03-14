@@ -55,10 +55,11 @@ class Register_Medicine extends Model
 //            ->leftJoin('prescriptions as pre','pre.medicine_examination_id','=','me_ex.id')
 //            ->leftJoin('prescript_medicine as pre_me','pre_me.prescription_id','=','pre.id')
             ->Where('register_medicines.status','=',3)
-            ->Where('c.name', 'like', '%'.$key.'%')
-//            ->Where('me_ex.date_examination', 'like', '%'.$key.'%')
+//            ->Where('c.name', 'like', '%'.$key.'%')
+            ->Where('c.code', 'like', '%'.$key.'%')
             ->whereNull('register_medicines.deleted_at')
-            ->select('c.name','c.address','c.phone_number','c.birthday','register_medicines.id as register_id','register_medicines.status','me_ex.*')
+            ->select('c.name','c.address','c.code','c.phone_number','c.birthday','register_medicines.id as register_id','register_medicines.status','me_ex.*')
+            ->orderBy('me_ex.date_examination','DESC')
             ->paginate($paginate);
         return $register_medicine;
     }

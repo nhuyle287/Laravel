@@ -126,6 +126,9 @@
                                     <th style="width: 10px"><input type="checkbox" id="check-all"></th>
                                     <th class="thstyleform">STT</th>
                                     <th class="thstyleform">
+                                        Mã khách hàng
+                                    </th>
+                                    <th class="thstyleform">
                                         Khách hàng
                                     </th>
                                     <th class="thstyleform">

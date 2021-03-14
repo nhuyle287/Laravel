@@ -397,6 +397,52 @@
                 $(this).val(this.checked ? "TRUE" : "FALSE");
                 calculatorTotalPricenamePrice();
             })
+
+            $('#amount_date').keyup(function (){
+                calculatorTotalamonut();
+                let data_price_medicine=$('#price').val();
+                var quantity = $('#amount_medicine').val();
+                // console.log(data_price_medicine)
+                tien = parseInt(data_price_medicine) * parseInt(quantity);
+                total_price.value = tien;
+                calculatorTotal();
+            })
+            $('#morning').keyup(function (){
+                calculatorTotalamonut();
+                let data_price_medicine=$('#price').val();
+                var quantity = $('#amount_medicine').val();
+                // console.log(data_price_medicine)
+                tien = parseInt(data_price_medicine) * parseInt(quantity);
+                total_price.value = tien;
+                calculatorTotal();
+            })
+            $('#afternoon').keyup(function (){
+                calculatorTotalamonut();
+                let data_price_medicine=$('#price').val();
+                var quantity = $('#amount_medicine').val();
+                // console.log(data_price_medicine)
+                tien = parseInt(data_price_medicine) * parseInt(quantity);
+                total_price.value = tien;
+                calculatorTotal();
+            })
+            $('#everning').keyup(function (){
+                calculatorTotalamonut();
+                let data_price_medicine=$('#price').val();
+                var quantity = $('#amount_medicine').val();
+                // console.log(data_price_medicine)
+                tien = parseInt(data_price_medicine) * parseInt(quantity);
+                total_price.value = tien;
+                calculatorTotal();
+            })
+            $('#night').keyup(function (){
+                calculatorTotalamonut();
+                var quantity = $('#amount_medicine').val();
+                let data_price_medicine=$('#price').val();
+                // console.log(data_price_medicine)
+                tien = parseInt(data_price_medicine) * parseInt(quantity);
+                total_price.value = tien;
+                calculatorTotal();
+            })
         });
 
         function selectNamedomain(obj) {
@@ -426,8 +472,20 @@
             id_medicine.value = data_id_medicine;
         }
 
+        function calculatorTotalamonut() {
+            let amount_date= $('#amount_date').val();
+            let morning=$('#morning').val();
+            let afternoon=$('#afternoon').val();
+            let everning= $('#everning').val();
+            let night=$('#night').val();
+            let amount=parseInt(amount_date)*(parseInt(morning)+parseInt(afternoon)+parseInt(everning)+parseInt(night));
+            console.log(amount);
+            $('#amount_medicine').val(amount);
+            $('#amount_medicine').text(amount);
+        }
 
         function calculatorTotal() {
+
             let price_vps = $('#total_price').val();
             let sumtotal = $('#sumtotal_price').val();
             let total_all = parseInt(price_vps)

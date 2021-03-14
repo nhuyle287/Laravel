@@ -44,7 +44,7 @@ class Register_Medicine extends Model
             ->Where('register_medicines.status','=',1)
             ->Where('c.name', 'like', '%'.$key.'%')
             ->whereNull('register_medicines.deleted_at')
-            ->select('c.name','c.id as customer_id','register_medicines.id','register_medicines.status')
+            ->select('c.name','c.code','c.id as customer_id','register_medicines.id','register_medicines.status')
             ->paginate($paginate);
         return $register_medicine;
     }

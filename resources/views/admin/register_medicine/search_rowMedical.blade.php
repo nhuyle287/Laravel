@@ -34,6 +34,10 @@
                                     <td>{{ $register_medicine->id }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Mã khách hàng</td>
+                                    <td>{{ $register_medicine->code }}</td>
+                                </tr>
+                                <tr>
                                     <td>Khách hàng</td>
                                     <td>{{$register_medicine->name}}
                                     </td>

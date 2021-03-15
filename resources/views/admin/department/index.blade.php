@@ -2,7 +2,7 @@
 @section('title')
     Phòng ban
 @stop
-@section('css')
+@section('head')
 
     {{--    <link rel="stylesheet" href="{{ asset('../css/default.css') }}">--}}
     <link rel="stylesheet" href="css/responsive.css">
@@ -241,7 +241,11 @@
             </div>
         </div>
     @endcan
-
+    <script>
+        setTimeout(function () {
+            $('.button_').fadeOut('fast');
+        }, 2000);
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
 

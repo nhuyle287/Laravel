@@ -319,7 +319,8 @@
                                 <div class="col-xs-12 form-group d-flex">
                                     <label style="width:80%; text-align: right; margin-right: 5px; padding-top: 5px">Tổng
                                         tiền</label>
-                                    <input type="number" class="form-control" style="width: 20%" id="sumtotal_price" name="sum_totalprice"
+                                    <input type="number" class="form-control" style="width: 20%" id="sumtotal_price"
+                                           name="sum_totalprice"
                                            value="0">
                                     <p class="help-block text-danger"></p>
                                     @if($errors->has('sum_totalprice'))
@@ -351,9 +352,7 @@
     <script>
         window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
     </script>
-    <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
-    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -381,6 +380,99 @@
 
 
     <script>
+        function selectNamedomain(obj) {
+            var data_price_medicine = $(obj).find(':selected').data('price_medicine');
+            var price = document.getElementById('price');
+            price.value = data_price_medicine;
+            var quantity = $('#amount_medicine').val();
+            tien = parseInt(data_price_medicine) * parseInt(quantity);
+            total_price.value = tien;
+            var data_id_medicine = $(obj).find(':selected').data('id_medicine');
+            var id_medicine = document.getElementById('id_medicine');
+            id_medicine.value = data_id_medicine;
+        }
+
+        function calculatorTotalamonut() {
+            let amount_date = $('#amount_date').val();
+            let morning = $('#morning').val();
+            let afternoon = $('#afternoon').val();
+            let everning = $('#everning').val();
+            let night = $('#night').val();
+            let amount = parseInt(amount_date) * (parseInt(morning) + parseInt(afternoon) + parseInt(everning) + parseInt(night));
+            $('#amount_medicine').val(amount);
+            $('#amount_medicine').text(amount);
+            let data_price_medicine = $('#price').val();
+            tien = parseInt(data_price_medicine) * parseInt(amount);
+            $('#total_price').val(tien);
+            $('#total_price').text(tien);
+
+        }
+
+        function fomat_curent_VND(number) {
+            var formatter = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND',
+            })
+            var currentcy = formatter.format(number);
+            return currentcy;
+        }
+
+        function calculatorTotalPricenamePrice() {
+            let public_price = $('#price_public').val();
+            let ECG = $('#ECG').val();
+            let blood_sugar = $('#blood_sugar').val();
+            let price_diff = 0;
+            let total_diff;
+            if (public_price == 'TRUE') {
+                if (ECG == 'TRUE') {
+                    if (blood_sugar == 'TRUE') {
+                        total_diff = parseInt(price_diff) + 60000;
+                    } else {
+                        total_diff = parseInt(price_diff) + 40000;
+                    }
+                } else {
+                    if (blood_sugar == 'TRUE') {
+                        total_diff = parseInt(price_diff) + 40000;
+                    } else {
+                        total_diff = parseInt(price_diff) + 20000;
+                    }
+                }
+
+            } else {
+                if (ECG == 'TRUE') {
+                    if (blood_sugar == 'TRUE') {
+                        total_diff = parseInt(price_diff) + 40000;
+                    } else {
+                        total_diff = parseInt(price_diff) + 20000;
+                    }
+                } else {
+                    if (blood_sugar == 'TRUE') {
+                        total_diff = parseInt(price_diff) + 20000;
+                    } else {
+                        total_diff = parseInt(price_diff);
+                    }
+
+                }
+            }
+            // console.log(public_price);
+            // console.log(ECG);
+            // console.log(blood_sugar);
+            sum = 0;
+            $('#tb_ctcc tr').each(function () {
+                var total_price = $(this).find(".list_price").val();
+                if (total_price != undefined) {
+                    sum = sum + parseInt(total_price);
+
+                }
+            });
+            let sum_totalprice = sum + parseInt(total_diff);
+            $('#sumtotal_price').val(sum_totalprice);
+            $('#sumtotal_price').text(sum_totalprice);
+            // console.log(sum)
+
+        }
+
+
         $(document).ready(function () {
             $('.js-example-basic-single').select2();
 
@@ -398,180 +490,28 @@
                 calculatorTotalPricenamePrice();
             })
 
-            $('#amount_date').keyup(function (){
+            $('#amount_date').keyup(function () {
                 calculatorTotalamonut();
-                let data_price_medicine=$('#price').val();
-                var quantity = $('#amount_medicine').val();
-                // console.log(data_price_medicine)
-                tien = parseInt(data_price_medicine) * parseInt(quantity);
-                total_price.value = tien;
-                calculatorTotal();
+
             })
-            $('#morning').keyup(function (){
+            $('#morning').keyup(function () {
                 calculatorTotalamonut();
-                let data_price_medicine=$('#price').val();
-                var quantity = $('#amount_medicine').val();
-                // console.log(data_price_medicine)
-                tien = parseInt(data_price_medicine) * parseInt(quantity);
-                total_price.value = tien;
-                calculatorTotal();
+
             })
-            $('#afternoon').keyup(function (){
+            $('#afternoon').keyup(function () {
                 calculatorTotalamonut();
-                let data_price_medicine=$('#price').val();
-                var quantity = $('#amount_medicine').val();
-                // console.log(data_price_medicine)
-                tien = parseInt(data_price_medicine) * parseInt(quantity);
-                total_price.value = tien;
-                calculatorTotal();
+
             })
-            $('#everning').keyup(function (){
+            $('#everning').keyup(function () {
                 calculatorTotalamonut();
-                let data_price_medicine=$('#price').val();
-                var quantity = $('#amount_medicine').val();
-                // console.log(data_price_medicine)
-                tien = parseInt(data_price_medicine) * parseInt(quantity);
-                total_price.value = tien;
-                calculatorTotal();
+
             })
-            $('#night').keyup(function (){
+            $('#night').keyup(function () {
                 calculatorTotalamonut();
-                var quantity = $('#amount_medicine').val();
-                let data_price_medicine=$('#price').val();
-                // console.log(data_price_medicine)
-                tien = parseInt(data_price_medicine) * parseInt(quantity);
-                total_price.value = tien;
-                calculatorTotal();
+
             })
+
         });
-
-        function selectNamedomain(obj) {
-            var data_price_medicine = $(obj).find(':selected').data('price_medicine');
-            var price = document.getElementById('price');
-            price.value = data_price_medicine;
-
-            $('#name_medicine').on('change', function () {
-                var quantity = $('#amount_medicine').val();
-                // console.log(data_price_medicine)
-                tien = parseInt(data_price_medicine) * parseInt(quantity);
-                total_price.value = tien;
-                calculatorTotal();
-                // calculatorTotalPricenamePrice();
-            });
-            $('#amount_medicine').keyup(function () {
-                var quantity = $('#amount_medicine').val();
-                tien = parseInt(data_price_medicine) * parseInt(quantity);
-                total_price.value = tien;
-                calculatorTotal();
-
-            });
-
-
-            var data_id_medicine = $(obj).find(':selected').data('id_medicine');
-            var id_medicine = document.getElementById('id_medicine');
-            id_medicine.value = data_id_medicine;
-        }
-
-        function calculatorTotalamonut() {
-            let amount_date= $('#amount_date').val();
-            let morning=$('#morning').val();
-            let afternoon=$('#afternoon').val();
-            let everning= $('#everning').val();
-            let night=$('#night').val();
-            let amount=parseInt(amount_date)*(parseInt(morning)+parseInt(afternoon)+parseInt(everning)+parseInt(night));
-            console.log(amount);
-            $('#amount_medicine').val(amount);
-            $('#amount_medicine').text(amount);
-        }
-
-        function calculatorTotal() {
-
-            let price_vps = $('#total_price').val();
-            let sumtotal = $('#sumtotal_price').val();
-            let total_all = parseInt(price_vps)
-            let sum_all = parseInt(sumtotal) + parseInt(price_vps)
-            $('#total_price').val(total_all);
-            $('#total_price').text(total_all);
-
-        }
-
-        function fomat_curent_VND(number) {
-            var formatter = new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND',
-            })
-            var currentcy = formatter.format(number);
-            return currentcy;
-        }
-
-        function calculatorTotalPricenamePrice() {
-            let public_price = $('#price_public').val();
-            let ECG = $('#ECG').val();
-            let blood_sugar = $('#blood_sugar').val();
-            let price_diff=0;
-            let total_diff;
-            if(public_price=='TRUE')
-            {
-                if(ECG=='TRUE')
-                {
-                    if(blood_sugar=='TRUE')
-                    {
-                        total_diff=parseInt(price_diff)+60000;
-                    }
-                    else {
-                        total_diff=parseInt(price_diff)+40000;
-                    }
-                }
-                else {
-                    if(blood_sugar=='TRUE')
-                    {
-                        total_diff=parseInt(price_diff)+40000;
-                    }
-                    else {
-                        total_diff=parseInt(price_diff)+20000;
-                    }
-                }
-
-            }
-            else {
-                if(ECG=='TRUE')
-                {
-                    if(blood_sugar=='TRUE')
-                    {
-                        total_diff=parseInt(price_diff)+40000;
-                    }
-                    else {
-                        total_diff=parseInt(price_diff)+20000;
-                    }
-                }
-                else {
-                    if(blood_sugar=='TRUE')
-                    {
-                        total_diff=parseInt(price_diff)+20000;
-                    }
-                    else {
-                        total_diff=parseInt(price_diff);
-                    }
-
-                }
-            }
-            // console.log(public_price);
-            // console.log(ECG);
-            // console.log(blood_sugar);
-            sum = 0;
-            $('#tb_ctcc tr').each(function () {
-                var total_price = $(this).find(".list_price").val();
-                if (total_price != undefined) {
-                    sum = sum + parseInt(total_price) ;
-
-                }
-            });
-            let sum_totalprice= sum+ parseInt(total_diff);
-            $('#sumtotal_price').val(sum_totalprice);
-            $('#sumtotal_price').text(sum_totalprice);
-            console.log(sum)
-
-        }
 
 
         var list_cc = [];

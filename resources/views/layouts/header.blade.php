@@ -31,7 +31,7 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+{{--    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">--}}
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
 
@@ -63,7 +63,7 @@
     <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- daterangepicker -->
     <script src="plugins/moment/moment.min.js"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js"></script>
+{{--    <script src="plugins/daterangepicker/daterangepicker.js"></script>--}}
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Summernote -->
@@ -76,7 +76,7 @@
     <script src="dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
-    <script src="js/yazaki.js"></script>
+{{--    <script src="js/yazaki.js"></script>--}}
     <script src="selected/js/select2.min.js"></script>
 
     {{----}}
@@ -84,11 +84,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css"
           rel="stylesheet"/>
-    <script src="{{asset('js/loading.js')}}"></script>
+{{--    <script src="{{asset('js/loading.js')}}"></script>--}}
 
-     <script>
-        setTimeout(function () {
-            $('.button_').fadeOut('fast');
-        }, 2000);
-    </script>
+
 </head>

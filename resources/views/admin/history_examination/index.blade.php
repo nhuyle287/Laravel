@@ -158,6 +158,11 @@
 @stop
 
 @section('javascript')
+    <script>
+        setTimeout(function () {
+            $('.button_').fadeOut('fast');
+        }, 2000);
+    </script>
     <script type="text/javascript">
 
         $(document).ready(function () {

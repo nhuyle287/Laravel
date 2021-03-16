@@ -426,15 +426,15 @@
             if (public_price == 'TRUE') {
                 if (ECG == 'TRUE') {
                     if (blood_sugar == 'TRUE') {
-                        total_diff = parseInt(price_diff) + 60000;
+                        total_diff = parseInt(price_diff) + 65000;
                     } else {
-                        total_diff = parseInt(price_diff) + 40000;
+                        total_diff = parseInt(price_diff) + 45000;
                     }
                 } else {
                     if (blood_sugar == 'TRUE') {
-                        total_diff = parseInt(price_diff) + 40000;
+                        total_diff = parseInt(price_diff) + 45000;
                     } else {
-                        total_diff = parseInt(price_diff) + 20000;
+                        total_diff = parseInt(price_diff) + 25000;
                     }
                 }
 
@@ -454,9 +454,6 @@
 
                 }
             }
-            // console.log(public_price);
-            // console.log(ECG);
-            // console.log(blood_sugar);
             sum = 0;
             $('#tb_ctcc tr').each(function () {
                 var total_price = $(this).find(".list_price").val();
@@ -468,7 +465,6 @@
             let sum_totalprice = sum + parseInt(total_diff);
             $('#sumtotal_price').val(sum_totalprice);
             $('#sumtotal_price').text(sum_totalprice);
-            // console.log(sum)
 
         }
 

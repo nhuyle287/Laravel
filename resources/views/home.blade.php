@@ -14,17 +14,40 @@
         }
 
         #month {
-            margin-left: 5rem;
+            margin-right: 0.5rem;
         }
 
         #chart {
-            margin-top: 0.5rem;
+            margin: 0.5rem 1.5rem;
             border: 1px solid #d2d0d0;
             border-radius: 5px;
             width: 500px;
             background-color: white;
             padding: 0.5rem;
+            /*box-shadow: 5px 5px 8px #888888;*/
+
+        }
+        .chart{
+            width: 550px;
+            /*margin-top: 0.5rem;*/
+            border: 1px solid #d2d0d0;
+            border-radius: 5px;
+            background-color: white;
+            /*padding: 1rem;*/
             box-shadow: 5px 5px 8px #888888;
+        }
+        .title{
+            display: block;
+            padding: 0.5rem;
+            text-align: center;
+            background-image: linear-gradient(to top, #83abda, rgb(22, 53, 138));
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        #button{
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 0.5rem;
         }
     </style>
 @stop
@@ -95,44 +118,25 @@
                 <!-- fix for small devices only -->
                 <div class="clearfix hidden-md-up"></div>
 
-            {{--                <div class="col-12 col-sm-6 col-md-3">--}}
-            {{--                    <div class="info-box mb-3">--}}
-            {{--                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>--}}
 
-            {{--                        <div class="info-box-content">--}}
-            {{--                            <span class="info-box-text">Sales</span>--}}
-            {{--                            <span class="info-box-number">760</span>--}}
-            {{--                        </div>--}}
-            {{--                        <!-- /.info-box-content -->--}}
-            {{--                    </div>--}}
-            {{--                    <!-- /.info-box -->--}}
-            {{--                </div>--}}
-            {{--                <!-- /.col -->--}}
-            {{--                <div class="col-12 col-sm-6 col-md-3">--}}
-            {{--                    <div class="info-box mb-3">--}}
-            {{--                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>--}}
-
-            {{--                        <div class="info-box-content">--}}
-            {{--                            <span class="info-box-text">New Members</span>--}}
-            {{--                            <span class="info-box-number">2,000</span>--}}
-            {{--                        </div>--}}
-            {{--                        <!-- /.info-box-content -->--}}
-            {{--                    </div>--}}
-            {{--                    <!-- /.info-box -->--}}
-            {{--                </div>--}}
-            <!-- /.col -->
+                <!-- /.col -->
             </div>
             <!-- /.row -->
 
 
             <!-- BAR CHART -->
-            <div>
-                <button id="month" class="btn sm-btn btn-default">Danh thu theo tháng</button>
-                <button id="year" class="btn sm-btn btn-default">Danh thu theo năm</button>
-            </div>
-            <div id="chart">
-                <canvas id="barChart"></canvas>
-            </div>
+           <div class="chart">
+               <div class="title">
+                   Thống kê doanh thu
+               </div>
+               <div id="button">
+                   <button id="month" class="btn sm-btn btn-default">Tháng</button>
+                   <button id="year" class="btn sm-btn btn-default">Năm</button>
+               </div>
+               <div id="chart">
+                   <canvas id="barChart"></canvas>
+               </div>
+           </div>
 
 
             <script>
@@ -216,58 +220,9 @@
                         })
                     });
                 })
-                // var areaChartData = {
-                //     labels  : month,
-                //     datasets: [
-                //         {
-                //             label               : 'Tháng',
-                //             backgroundColor     : 'rgba(60,141,188,0.9)',
-                //             borderColor         : 'rgba(60,141,188,0.8)',
-                //             pointRadius          : false,
-                //             pointColor          : '#3b8bba',
-                //             pointStrokeColor    : 'rgba(60,141,188,1)',
-                //             pointHighlightFill  : '#fff',
-                //             pointHighlightStroke: 'rgba(60,141,188,1)',
-                //             data                : price
-                //         },
-                //         {
-                //             label               : 'Năm',
-                //             backgroundColor     : 'rgba(210, 214, 222, 1)',
-                //             borderColor         : 'rgba(210, 214, 222, 1)',
-                //             pointRadius         : false,
-                //             pointColor          : 'rgba(210, 214, 222, 1)',
-                //             pointStrokeColor    : '#c1c7d1',
-                //             pointHighlightFill  : '#fff',
-                //             pointHighlightStroke: 'rgba(220,220,220,1)',
-                //             data                : price_year
-                //         },
-                //     ]
-                // }
+
 
                 window.onload = function () {
-
-                    //-------------
-                    //- BAR CHART -
-                    //-------------
-                    // var barChartCanvas = $('#barChart').get(0).getContext('2d')
-                    // var barChartData = jQuery.extend(true, {}, areaChartData)
-                    // var temp0 = areaChartData.datasets[0]
-                    // var temp1 = areaChartData.datasets[1]
-                    // barChartData.datasets[0] = temp1
-                    // barChartData.datasets[1] = temp0
-                    //
-                    // var barChartOptions = {
-                    //     responsive              : true,
-                    //     maintainAspectRatio     : false,
-                    //     datasetFill             : false
-                    // }
-                    //
-                    // var barChart = new Chart(barChartCanvas, {
-                    //     type: 'bar',
-                    //     data: barChartData,
-                    //     options: barChartOptions
-                    // })
-
 
                     var ctx = document.getElementById("barChart").getContext("2d");
                     window.myBar = new Chart(ctx, {
@@ -290,7 +245,6 @@
                         }
                     });
                 };
-
 
 
                 function animateValue(obj, start = 0, end = null, duration = 1000) {

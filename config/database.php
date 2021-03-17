@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-
+$DATABASE_URL = parse_url('DATABASE_URL');
 return [
 
     /*
@@ -32,7 +32,7 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-    $DATABASE_URL = parse_url('postgres://ajgjqfqabauohh:7edd5bc9bb673ab86b9d03e6a40aaedf2744e4e23d35119c7571c0245bcf1922@ec2-3-87-180-131.compute-1.amazonaws.com:5432/d17v4g99cjru17'),
+
 
     'connections' => [
 
@@ -67,17 +67,21 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-//            'database' => env('DB_DATABASE', 'forge'),
+            'host'=>$DATABASE_URL["host"],
+            'port'=>$DATABASE_URL["port"],
             'database' => ltrim($DATABASE_URL["path"], "/"),
             'username'=>$DATABASE_URL["user"],
             'password'=>$DATABASE_URL["pass"],
+//            'url' => env('DATABASE_URL'),
+//            'host' => env('DB_HOST', '127.0.0.1'),
+//            'port' => env('DB_PORT', '5432'),
+//            'database' => env('DB_DATABASE', 'forge'),
+
 //            'username' => env('DB_USERNAME', 'forge'),
 //
 //            'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
+//            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
+
 $DATABASE_URL = parse_url('DATABASE_URL');
 return [
 
@@ -53,8 +54,10 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+//            'charset' => 'utf8mb4',
+//            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
 //            'client_encoding'=>'utf8mb4',
@@ -67,12 +70,13 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host'=>$DATABASE_URL["host"],
-            'port'=>$DATABASE_URL["port"],
+            'url' => env('DATABASE_URL'),
+            'host' => $DATABASE_URL["host"],
+            'port' => $DATABASE_URL["port"],
             'database' => ltrim($DATABASE_URL["path"], "/"),
-            'username'=>$DATABASE_URL["user"],
-            'password'=>$DATABASE_URL["pass"],
-//            'url' => env('DATABASE_URL'),
+            'username' => $DATABASE_URL["user"],
+            'password' => $DATABASE_URL["pass"],
+
 //            'host' => env('DB_HOST', '127.0.0.1'),
 //            'port' => env('DB_PORT', '5432'),
 //            'database' => env('DB_DATABASE', 'forge'),

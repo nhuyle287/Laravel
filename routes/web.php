@@ -166,6 +166,18 @@ Route::namespace('Admin')->prefix('/admin')->group(function (): void {
 
     });
 
+//    expenditure
+    Route::prefix('/expenditure')->group(function(): void{
+        Route::get('/', 'ExpenditureController@index')->name('admin.expenditure.index');
+        Route::post('/', 'ExpenditureController@searchRow')->name('admin.expenditure.search-row');
+        Route::post('/print','ExpenditureController@print')->name('admin.expenditure.print');
+        Route::get('/create', 'ExpenditureController@entry')->name('admin.expenditure.create');
+        Route::get('/{id}/edit', 'ExpenditureController@entry')->name('admin.expenditure.edit');
+        Route::post('/store','ExpenditureController@store')->name('admin.expenditure.store');
+        Route::post('/destroy', 'ExpenditureController@destroy')->name('admin.expenditure.destroy');
+        Route::post('/destroy-select', 'ExpenditureController@destroySelect')->name('admin.expenditure.destroy-select');
+    });
+
 });
 
 Route::namespace('Register')->prefix('/register')->group(function ():void{

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Models\Customer;
+use App\Models\Expenditure;
 use App\Models\Medical_Examination;
 use Illuminate\Support\Facades\DB;
 
@@ -37,9 +38,19 @@ class HomeController extends AdminController
             $price[] = Medical_Examination::whereMonth('medical_examinations.date_examination', '=', $value)->sum('medical_examinations.total_price');
         }
 
+        $price_expenditure=[];
+        foreach ($month_ as $key => $value) {
+            $price_expenditure[] = Expenditure::whereMonth('expenditures.date', '=', $value)->sum('expenditures.price');
+        }
+
         $price_year=[];
         foreach ($year as $key => $value) {
             $price_year[] = Medical_Examination::whereYear('medical_examinations.date_examination', '=', $value->year)->sum('medical_examinations.total_price');
+        }
+
+        $price_year_expenditure=[];
+        foreach ($year as $key => $value) {
+            $price_year_expenditure[] = Expenditure::whereYear('expenditures.date', '=',  $value->year)->sum('expenditures.price');
         }
 //        dd($price);
 
@@ -47,6 +58,8 @@ class HomeController extends AdminController
             ->with('month',json_encode($month,JSON_ERROR_UTF8))
             ->with('price',json_encode($price,JSON_NUMERIC_CHECK))
             ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
+            ->with('price_expenditure',json_encode($price_expenditure,JSON_NUMERIC_CHECK))
+            ->with('price_year_expenditure',json_encode($price_year_expenditure,JSON_NUMERIC_CHECK))
             ->with('price_year',json_encode($price_year,JSON_NUMERIC_CHECK));
 
     }

@@ -79,7 +79,8 @@ class MedicalExaminationController extends AdminController
             ->join('prescript_medicine as pre_me', 'pre_me.prescription_id', '=', 'pre.id')
             ->join('medicines as me', 'me.id', '=', 'pre_me.medicine_id')
             ->where('pre.medicine_examination_id', '=', $id)
-            ->select('me.*', 'pre_me.amount_medicine', 'pre_me.total_price')
+            ->select('me.*', 'pre_me.amount_medicine', 'pre_me.total_price','pre_me.amount_date',
+            'pre_me.morning','pre_me.afternoon','pre_me.everning','pre_me.night')
             ->get();
         return view('admin.history_examination.show', compact('register_medicines', 'medicines'));
     }

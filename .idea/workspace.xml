@@ -20,11 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c49a491-a68a-4f99-88eb-789ad3f58572" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/expenditure/export.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/export.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/expenditure/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpenditureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpenditureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MedicalExaminationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MedicalExaminationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Register_medicineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Register_medicineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Register_Medicine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Register_Medicine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_19_030132_create_table_medical_examinations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_19_030132_create_table_medical_examinations_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_19_032642_create_table_prescript_medicine_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_19_032642_create_table_prescript_medicine_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/expenditure/add-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/add-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/history_examination/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/history_examination/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/register_medicine/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/register_medicine/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +43,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -180,6 +196,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/history_examination" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -247,7 +264,8 @@
       <workItem from="1615882616090" duration="759000" />
       <workItem from="1615906898700" duration="59000" />
       <workItem from="1615998168967" duration="3940000" />
-      <workItem from="1616203449475" duration="1227000" />
+      <workItem from="1616203449475" duration="3063000" />
+      <workItem from="1616221512596" duration="3461000" />
     </task>
     <servers />
   </component>

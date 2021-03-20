@@ -163,7 +163,14 @@
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <th>Thuốc</th>
+                                <th>Ngày</th>
 
+                                <th>Sáng</th>
+
+                                <th>Trưa</th>
+
+                                <th>Chiều</th>
+                                <th>Tối</th>
                                 <th>Giá</th>
 
                                 <th>Số lượng</th>
@@ -179,6 +186,21 @@
                                             {{$me->name}}
                                         </td>
                                         <td>
+                                            {{$me->amount_date}}
+                                        </td>
+                                        <td>
+                                            {{$me->morning}}
+                                        </td>
+                                        <td>
+                                            {{$me->afternoon}}
+                                        </td>
+                                        <td>
+                                            {{$me->everning}}
+                                        </td>
+                                        <td>
+                                            {{$me->night}}
+                                        </td>
+                                        <td>
                                             {{$me->price}}
                                         </td>
                                         <td>
@@ -192,7 +214,7 @@
                                 @endforeach
                             @endif
                             <tr>
-                                <td colspan="3" style="text-align: right">
+                                <td colspan="8" style="text-align: right">
                                     Tổng tiền:
                                 </td>
                                 <td>

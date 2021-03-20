@@ -53,7 +53,7 @@
 
                                             <div class="form-group col-md-6">
                                                 <div class="col-xs-12 form-group">
-                                                    <label>Người nhận <span class="aster">*</span></label>
+                                                    <label>Người nhận <label class="content-required">*</label></label>
                                                     <input id="price" type="text"
                                                            class="form-control" name="receiver" required
 
@@ -66,7 +66,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <div class="col-xs-12 form-group">
-                                                    <label>Địa chỉ <span class="aster">*</span></label>
+                                                    <label>Địa chỉ <label class="content-required">*</label></label>
                                                     <input id="price" type="text"
                                                            class="form-control" name="address_receiver"
                                                            required
@@ -85,7 +85,7 @@
 
                                             <div class="form-group col-md-6">
                                                 <div class="col-xs-12 form-group">
-                                                    <label>Phí chi <span class="aster">*</span></label>
+                                                    <label>Phí chi <label class="content-required">*</label></label>
                                                     <input id="price" type="number"
                                                            class="form-control" name="price" required
 
@@ -100,8 +100,7 @@
                                             <div class="form-group col-md-6">
 
                                                 <div class="col-xs-12 form-group">
-                                                    <label>Lí do chi <span
-                                                            class="aster">*</span></label>
+                                                    <label>Lí do chi <label class="content-required">*</label></label>
                                                     <textarea rows="5" id="receipt_type" type="text"
                                                               class="form-control"
                                                               name="description" required
@@ -125,10 +124,11 @@
 
                             <hr>
                             <div class="event_">
-                                <button type="submit" id="submit"
-                                        class="btn btn-default">{{ __('general.save') }}</button>
                                 <a style="margin-right: 5px" href="{{ route('admin.expenditure.index') }}"
                                    class="btn btn-default">{{ __('general.back') }}</a>
+                                <button type="submit" id="submit"
+                                        class="btn btn-danger">{{ __('general.save') }}</button>
+
                             </div>
 
                             {{--                                        <a href="{{ route('admin.invoices.receiptsstore') }}"--}}

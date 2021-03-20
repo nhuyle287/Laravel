@@ -189,9 +189,9 @@
                                                                     <div class="infor">
                                                                         <p><strong
                                                                             >Đơn
-                                                                                vị:</strong><span>CÔNG TY TNHH TMDV HOA TECHNOLOGY</span>
+                                                                                vị:</strong><span> PHÒNG MẠCH LÝ KIM TÙNG</span>
                                                                         </p>
-                                                                        <strong>Địa chỉ: </strong><span>Lô 09, Tòa nhà 4S Riverside Garden, Đường số 17, Hiệp Bình Chánh, Thủ Đức, TPHCM</span>
+                                                                        <strong>Địa chỉ: </strong><span>Phường Bình Đức, Thành Phố Long Xuyên, Tỉnh An Giang</span>
                                                                     </div>
                                                                 </div>
                                                                 <div>

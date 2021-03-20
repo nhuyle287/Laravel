@@ -52,9 +52,9 @@
             <div class="receipts">
                 <div>
                     <div class="infor">
-                        <p style=" margin-bottom: 0; margin-top: 0"><strong style=" margin-bottom: 0; margin-top: 0">Đơn vị:</strong><span>CÔNG TY TNHH TMDV HOA TECHNOLOGY</span>
+                        <p style=" margin-bottom: 0; margin-top: 0"><strong style=" margin-bottom: 0; margin-top: 0">Đơn vị:</strong><span> PHÒNG MẠCH LÝ KIM TÙNG</span>
                         </p>
-                        <strong style=" margin-bottom: 0;">Địa chỉ: </strong><span>Lô 09, Tòa nhà 4S Riverside Garden, Đường số 17, Hiệp Bình Chánh, Thủ Đức, TPHCM</span>
+                        <strong style=" margin-bottom: 0;">Địa chỉ: </strong><span>Phường Bình Đức, Thành Phố Long Xuyên, Tỉnh An Giang</span>
                     </div>
                 </div>
                 <div>

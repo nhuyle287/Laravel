@@ -96,7 +96,7 @@ class ExpenditureController extends AdminController
 
 //        $expen->id_staff = $request->id_staff;
         $expen->date = now()->format('Y/m/d H:i:s');
-        $expen->price = $request->price;
+        $expen->price =(float) $request->price;
         $expen->receiver = $request->receiver;
         $expen->description = $request->description;
         $expen->address_receiver=$request->address_receiver;

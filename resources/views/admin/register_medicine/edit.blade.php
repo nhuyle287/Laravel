@@ -14,7 +14,7 @@
                 Khám bệnh
             </div>
             <div class="card-body">
-                <form action="{{route('admin.medical-examinations.store')}}" method="post">
+                <form action="{{route('admin.medical-examinations.store')}}" method="post" id="medical">
                     @csrf
                     <input type="hidden" name="id" value="{{isset($customer) ? $customer: ''}}">
                     <input type="hidden" name="customer_id" value="{{isset($customer) ? $customer: ''}}">
@@ -176,7 +176,7 @@
                                     <div class="form-group col-md-1">
                                         <label>Ngày <label class="content-required">*</label></label>
                                         <div class="col-xs-12 form-group">
-                                            <input type="number" name="amount_date" value="0"
+                                            <input type="number" step="0.01" name="amount_date" value="0"
                                                    id="amount_date" class="form-control">
                                             <p class="help-block text-danger"></p>
                                             @if($errors->has('amount_date'))
@@ -189,7 +189,7 @@
                                     <div class="form-group col-md-1">
                                         <label>Sáng <label class="content-required">*</label></label>
                                         <div class="col-xs-12 form-group">
-                                            <input type="number" name="morning" value="0"
+                                            <input type="number" step="0.01" name="morning" value="0"
                                                    id="morning" class="form-control">
                                             <p class="help-block text-danger"></p>
                                             @if($errors->has('amount_date'))
@@ -202,7 +202,7 @@
                                     <div class="form-group col-md-1">
                                         <label>Trưa <label class="content-required">*</label></label>
                                         <div class="col-xs-12 form-group">
-                                            <input type="number" name="afternoon" value="0"
+                                            <input type="number" step="0.01" name="afternoon" value="0"
                                                    id="afternoon" class="form-control">
                                             <p class="help-block text-danger"></p>
                                             @if($errors->has('afternoon'))
@@ -215,7 +215,7 @@
                                     <div class="form-group col-md-1">
                                         <label>Chiều <label class="content-required">*</label></label>
                                         <div class="col-xs-12 form-group">
-                                            <input type="number" name="everning" value="0"
+                                            <input type="number" step="0.01" name="everning" value="0"
                                                    id="everning" class="form-control">
                                             <p class="help-block text-danger"></p>
                                             @if($errors->has('afternoon'))
@@ -228,7 +228,7 @@
                                     <div class="form-group col-md-1">
                                         <label>Tối <label class="content-required">*</label></label>
                                         <div class="col-xs-12 form-group">
-                                            <input type="number" name="night" value="0"
+                                            <input type="number" step="0.01" name="night" value="0"
                                                    id="night" class="form-control">
                                             <p class="help-block text-danger"></p>
                                             @if($errors->has('afternoon'))
@@ -242,7 +242,7 @@
                                     <div class="form-group col-md-1">
                                         <label>Sluong<label class="content-required">*</label></label>
                                         <div class="col-xs-12 form-group">
-                                            <input type="number" name="amount_medicine" value="0"
+                                            <input type="number" step="0.01" name="amount_medicine" value="0"
                                                    id="amount_medicine" class="form-control">
                                             <p class="help-block text-danger"></p>
                                             @if($errors->has('amount_medicine'))
@@ -256,7 +256,7 @@
                                     <div class="form-group col-md-2">
                                         <label>Giá <label class="content-required">*</label></label>
                                         <div class="col-xs-12 form-group">
-                                            <input type="number" readonly name="price"
+                                            <input type="number" step="0.01" readonly name="price"
                                                    id="price" class="form-control">
 
                                             <p class="help-block text-danger"></p>
@@ -385,7 +385,7 @@
             var price = document.getElementById('price');
             price.value = data_price_medicine;
             var quantity = $('#amount_medicine').val();
-            tien = parseInt(data_price_medicine) * parseInt(quantity);
+            tien = parseFloat(data_price_medicine) * parseFloat(quantity);
             total_price.value = tien;
             var data_id_medicine = $(obj).find(':selected').data('id_medicine');
             var id_medicine = document.getElementById('id_medicine');
@@ -398,11 +398,11 @@
             let afternoon = $('#afternoon').val();
             let everning = $('#everning').val();
             let night = $('#night').val();
-            let amount = parseInt(amount_date) * (parseInt(morning) + parseInt(afternoon) + parseInt(everning) + parseInt(night));
+            let amount = parseFloat(amount_date) * (parseFloat(morning) + parseFloat(afternoon) + parseFloat(everning) + parseFloat(night));
             $('#amount_medicine').val(amount);
             $('#amount_medicine').text(amount);
             let data_price_medicine = $('#price').val();
-            tien = parseInt(data_price_medicine) * parseInt(amount);
+            tien = parseFloat(data_price_medicine) * parseFloat(amount);
             $('#total_price').val(tien);
             $('#total_price').text(tien);
 
@@ -458,11 +458,11 @@
             $('#tb_ctcc tr').each(function () {
                 var total_price = $(this).find(".list_price").val();
                 if (total_price != undefined) {
-                    sum = sum + parseInt(total_price);
+                    sum = sum + parseFloat(total_price);
 
                 }
             });
-            let sum_totalprice = sum + parseInt(total_diff);
+            let sum_totalprice = sum + parseFloat(total_diff);
             $('#sumtotal_price').val(sum_totalprice);
             $('#sumtotal_price').text(sum_totalprice);
 
@@ -508,7 +508,13 @@
             })
 
         });
-
+        $('#medical').on('keyup keypress', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
 
         var list_cc = [];
         var i = 1;

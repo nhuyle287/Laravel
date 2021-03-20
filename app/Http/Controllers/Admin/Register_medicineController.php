@@ -108,7 +108,7 @@ class Register_medicineController extends AdminController
 //        medical_examination
         if($request->price_public=='TRUE')
         {
-            $price_public=20000;
+            $price_public=25000;
         }
         else {
             $price_public=0;
@@ -140,7 +140,7 @@ class Register_medicineController extends AdminController
         $medical_examination->message['diagnostic.required'] = 'Vui lòng nhập chuẩn đoán bệnh';
 
         $medical_examination->circuit=$request->circuit;
-        $medical_examination->temperature = $request->temperature;
+        $medical_examination->temperature =(float) $request->temperature;
         $medical_examination->breathing=$request->breathing;
         $medical_examination->blood_pressure = $request->blood_pressure;
         $medical_examination->diagnostic=$request->diagnostic;
@@ -179,13 +179,13 @@ class Register_medicineController extends AdminController
                 $prescript_medicine = new Prescript_Medicine();
                 $prescript_medicine->medicine_id = (int)$list_medicine[1];
                 $prescript_medicine->prescription_id =$prescription_id;
-                $prescript_medicine->amount_date = (int)$list_medicine[3];
-                $prescript_medicine->morning = (int)$list_medicine[4];
-                $prescript_medicine->afternoon = (int)$list_medicine[5];
-                $prescript_medicine->everning = (int)$list_medicine[6];
-                $prescript_medicine->night = (int)$list_medicine[7];
-                $prescript_medicine->amount_medicine = (int)$list_medicine[8];
-                $prescript_medicine->total_price = (int)$list_medicine[10];
+                $prescript_medicine->amount_date = (float)$list_medicine[3];
+                $prescript_medicine->morning = (float)$list_medicine[4];
+                $prescript_medicine->afternoon = (float)$list_medicine[5];
+                $prescript_medicine->everning = (float)$list_medicine[6];
+                $prescript_medicine->night = (float)$list_medicine[7];
+                $prescript_medicine->amount_medicine = (float)$list_medicine[8];
+                $prescript_medicine->total_price = (float)$list_medicine[10];
 //                array_push($list_totalprice, $total_price);
 
                 $prescript_medicine->save();

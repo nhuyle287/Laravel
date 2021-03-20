@@ -17,7 +17,7 @@ class CreateTableMedicalExaminationsTable extends Migration
             $table->increments('id');
             $table->date('date_examination')->nullable();
             $table->integer('circuit')->nullable();
-            $table->integer('temperature')->nullable();
+            $table->float('temperature')->nullable();
             $table->integer('breathing')->nullable();
             $table->integer('blood_pressure')->nullable();
             $table->string('diagnostic')->nullable();

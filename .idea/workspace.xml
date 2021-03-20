@@ -20,24 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c49a491-a68a-4f99-88eb-789ad3f58572" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpenditureController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Expenditure.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_19_180442_create_table_expenditures_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vi/expenditure.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/add-edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/export.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/search-row.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Laravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/expenditure/export.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/export.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/expenditure/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/expenditure/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +160,8 @@
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
     </include_path>
   </component>
   <component name="ProjectId" id="1nhiJQQOOl970NbByVkYlUVAmDv" />
@@ -258,6 +247,7 @@
       <workItem from="1615882616090" duration="759000" />
       <workItem from="1615906898700" duration="59000" />
       <workItem from="1615998168967" duration="3940000" />
+      <workItem from="1616203449475" duration="1227000" />
     </task>
     <servers />
   </component>

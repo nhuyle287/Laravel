@@ -52,8 +52,6 @@ class Register_Medicine extends Model
         $register_medicine=DB::table('register_medicines')
             ->join('customers as c','c.id','=','register_medicines.customer_id')
             ->join('medical_examinations as me_ex','me_ex.id','=','register_medicines.medical_examination_id')
-//            ->leftJoin('prescriptions as pre','pre.medicine_examination_id','=','me_ex.id')
-//            ->leftJoin('prescript_medicine as pre_me','pre_me.prescription_id','=','pre.id')
             ->Where('register_medicines.status','=',3)
             ->Where('c.code', 'like', '%'.$key.'%')
             ->orWhere('c.name', 'like', '%'.$key.'%')

@@ -196,7 +196,7 @@ class Register_medicineController extends AdminController
 
 //        dd($sum);
         try {
-                $register_medicine->where('customer_id',$customer_id)->update(['medical_examination_id'=>$medical_examination_id,'status'=>3]);
+                $register_medicine->where('customer_id',$customer_id)->where('status',1)->update(['medical_examination_id'=>$medical_examination_id,'status'=>3]);
 
             return redirect(route('admin.history-examinations.index'))->with('success', 'Khám bệnh thành công');
         } catch (\Exception $e) {

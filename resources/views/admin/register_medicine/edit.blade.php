@@ -426,24 +426,24 @@
             if (public_price == 'TRUE') {
                 if (ECG == 'TRUE') {
                     if (blood_sugar == 'TRUE') {
-                        total_diff = parseInt(price_diff) + 65000;
+                        total_diff = parseInt(price_diff) + 75000;
                     } else {
-                        total_diff = parseInt(price_diff) + 45000;
+                        total_diff = parseInt(price_diff) + 55000;
                     }
                 } else {
                     if (blood_sugar == 'TRUE') {
-                        total_diff = parseInt(price_diff) + 45000;
+                        total_diff = parseInt(price_diff) + 55000;
                     } else {
-                        total_diff = parseInt(price_diff) + 25000;
+                        total_diff = parseInt(price_diff) + 45000;
                     }
                 }
 
             } else {
                 if (ECG == 'TRUE') {
                     if (blood_sugar == 'TRUE') {
-                        total_diff = parseInt(price_diff) + 40000;
+                        total_diff = parseInt(price_diff) + 50000;
                     } else {
-                        total_diff = parseInt(price_diff) + 20000;
+                        total_diff = parseInt(price_diff) + 30000;
                     }
                 } else {
                     if (blood_sugar == 'TRUE') {

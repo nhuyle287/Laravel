@@ -434,7 +434,7 @@
                     if (blood_sugar == 'TRUE') {
                         total_diff = parseInt(price_diff) + 55000;
                     } else {
-                        total_diff = parseInt(price_diff) + 45000;
+                        total_diff = parseInt(price_diff) + 25000;
                     }
                 }
 

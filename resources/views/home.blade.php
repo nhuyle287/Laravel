@@ -97,15 +97,18 @@
             <script>
                 var day = <?php echo $day; ?>;
                 let price_day = <?php echo $price_day; ?>;
+                let price_day_revenue = <?php echo $price_day_revenue; ?>;
                 let price_day_expenditure = <?php echo $price_day_expenditure; ?>;
                 var month = <?php echo $month; ?>;
 
                 var price = <?php echo $price; ?>;
                 let price_expenditure = <?php echo $price_expenditure; ?>;
+                let price_month_revenue = <?php echo $price_month_revenues; ?>;
+                let price_year_revenue = <?php echo $price_year_revenues; ?>;
                 var year_ = <?php echo $year; ?>;
                 let price_year_expenditure = <?php echo $price_year_expenditure; ?>;
                 var price_year = <?php echo $price_year; ?>;
-
+                // console.log(price_day_revenue)
                 var barChartDataDay = {
                     labels: day,
                     datasets: [{
@@ -121,6 +124,13 @@
                             borderColor: "blue",
                             borderWidth: 1,
                             data: price_day_expenditure
+                        },
+                        {
+                            label: "Doanh thu",
+                            backgroundColor: "lightyellow",
+                            borderColor: "yellow",
+                            borderWidth: 1,
+                            data: price_day_revenue
                         },]
                 };
 
@@ -145,6 +155,13 @@
                             borderColor: "blue",
                             borderWidth: 1,
                             data: price_year_expenditure
+                        },
+                        {
+                            label: "Doanh thu",
+                            backgroundColor: "lightyellow",
+                            borderColor: "yellow",
+                            borderWidth: 1,
+                            data: price_year_revenue
                         },]
                 };
 
@@ -165,6 +182,13 @@
                             borderColor: "blue",
                             borderWidth: 1,
                             data: price_expenditure
+                        },
+                        {
+                            label: "Doanh thu",
+                            backgroundColor: "lightyellow",
+                            borderColor: "yellow",
+                            borderWidth: 1,
+                            data: price_month_revenue
                         },
 
                     ]

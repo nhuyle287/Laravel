@@ -115,7 +115,7 @@ class Register_medicineController extends AdminController
         }
         if($request->ECG=='TRUE')
         {
-            $ECG=20000;
+            $ECG=30000;
         }
         else {
             $ECG=0;

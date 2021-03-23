@@ -41,6 +41,15 @@ class HomeController extends AdminController
         foreach ($day_ as $key => $value) {
             $price_day_expenditure[] = Expenditure::whereDay('expenditures.date', '=', $value)->sum('expenditures.price');
         }
+        $price_day_revenue=[];
+        $length=count($day_);
+
+        for ($i=0;$i<$length;$i++)
+        {
+            $price_revenue=$price_day[$i]-$price_day_expenditure[$i];
+            array_push($price_day_revenue,$price_revenue);
+        }
+//        dd($price_day_revenue);
         $month = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6','Tháng 7',
             'Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
 
@@ -55,7 +64,13 @@ class HomeController extends AdminController
         foreach ($month_ as $key => $value) {
             $price_expenditure[] = Expenditure::whereMonth('expenditures.date', '=', $value)->sum('expenditures.price');
         }
-
+        $length=count($month_);
+        $price_month_revenues=[];
+        for ($i=0;$i<$length;$i++)
+        {
+            $price_month_revenue=$price[$i]-$price_expenditure[$i];
+            array_push($price_month_revenues,$price_month_revenue);
+        }
         $price_year=[];
         foreach ($year as $key => $value) {
             $price_year[] = Medical_Examination::whereYear('medical_examinations.date_examination', '=', $value->year)->sum('medical_examinations.total_price');
@@ -65,6 +80,13 @@ class HomeController extends AdminController
         foreach ($year as $key => $value) {
             $price_year_expenditure[] = Expenditure::whereYear('expenditures.date', '=',  $value->year)->sum('expenditures.price');
         }
+        $length=count($price_year);
+        $price_year_revenues=[];
+        for ($i=0;$i<$length;$i++)
+        {
+            $price_year_revenue=$price_year[$i]-$price_year_expenditure[$i];
+            array_push($price_year_revenues,$price_year_revenue);
+        }
 //        dd($price);
 
         return view('home')->with('customer_count',$customer_count)->with('medical_examination',$medical_examination)
@@ -72,8 +94,11 @@ class HomeController extends AdminController
             ->with('price',json_encode($price,JSON_NUMERIC_CHECK))
             ->with('day',json_encode($day,JSON_ERROR_UTF8))
             ->with('price_day',json_encode($price_day,JSON_NUMERIC_CHECK))
+            ->with('price_day_revenue',json_encode($price_day_revenue,JSON_NUMERIC_CHECK))
             ->with('price_day_expenditure',json_encode($price_day_expenditure,JSON_NUMERIC_CHECK))
             ->with('year',json_encode($year,JSON_NUMERIC_CHECK))
+            ->with('price_month_revenues',json_encode($price_month_revenues,JSON_NUMERIC_CHECK))
+            ->with('price_year_revenues',json_encode($price_year_revenues,JSON_NUMERIC_CHECK))
             ->with('price_expenditure',json_encode($price_expenditure,JSON_NUMERIC_CHECK))
             ->with('price_year_expenditure',json_encode($price_year_expenditure,JSON_NUMERIC_CHECK))
             ->with('price_year',json_encode($price_year,JSON_NUMERIC_CHECK));

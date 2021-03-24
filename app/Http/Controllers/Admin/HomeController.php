@@ -55,7 +55,7 @@ class HomeController extends AdminController
 
         $price = [];
         $month_=[1,2,3,4,5,6,7,8,9,10,11,12];
-        $year=DB::table('medical_examinations')->select(DB::raw('Year(medical_examinations.date_examination) as year'))->distinct()->get();
+        $year=DB::table('medical_examinations')->select(DB::raw('extract(YEAR from date_examination) as year'))->distinct()->get();
         foreach ($month_ as $key => $value) {
             $price[] = Medical_Examination::whereMonth('medical_examinations.date_examination', '=', $value)->sum('medical_examinations.total_price');
         }

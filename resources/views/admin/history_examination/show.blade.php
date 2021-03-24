@@ -94,7 +94,7 @@
                                     </div>
                                 </div>
                             @endif
-                            @if($register_medicines->ECG!=0)
+                            @if($register_medicines->ecg!=0)
                                 <div class="form-group col-md-4">
                                     <div class="col-xs-6 form-group">
 
@@ -113,7 +113,7 @@
                                 <div class="form-group col-md-4">
                                     <div class="col-xs-6 form-group">
 
-                                        <input type="checkbox" id="ECG" name="ECG" style="width: min-content"
+                                        <input type="checkbox" id="ecg" name="ECG" style="width: min-content"
                                                value="">
                                         <label class="col-xs-8">ECG</label>
                                         <p class="help-block text-danger"></p>

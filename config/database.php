@@ -69,7 +69,7 @@ return [
         ],
 
         'pgsql' => [
-            'driver' => 'postpres',
+            'driver' => 'org.postgresql.driver',
             'host' => "ec2-3-87-180-131.compute-1.amazonaws.com",
             'port' => "5432",
             'database' => "d17v4g99cjru17",

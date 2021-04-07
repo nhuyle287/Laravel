@@ -75,7 +75,7 @@ return [
             'database' => "d17v4g99cjru17",
             'username' => "ajgjqfqabauohh",
             'password' => "7edd5bc9bb673ab86b9d03e6a40aaedf2744e4e23d35119c7571c0245bcf1922",
-            'charset' => 'utf8',
+//            'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'require',
